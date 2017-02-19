@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Login:
+  = @user.login
+p
+  strong Password:
+  = @user.password
+p
+  strong Vk:
+  = @user.vk_id
+
+= link_to 'Edit', edit_user_path(@user)
+'|
+= link_to 'Back', users_path
