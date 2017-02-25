@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :message do
-    text "MyString"
+  factory :message, class: 'Message' do
+    text 'text text text text text text text text text'
   end
 end

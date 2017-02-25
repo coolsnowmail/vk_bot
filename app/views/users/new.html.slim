@@ -1,5 +1,6 @@
-h1 New user
+.wraping
+  == render 'form'
 
-== render 'form'
+.links
+  = link_to t('Back'), admin_path(@current_admin)
 
-= link_to 'Back', users_path

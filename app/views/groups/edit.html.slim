@@ -1,8 +1,12 @@
-h1 Editing group
+.wraping
+  h4 =t('groups.editing_group')
 
-== render 'form'
+.alert
+  p#notice = notice
 
-= link_to 'Show', @group
-'|
-= link_to 'Back', groups_path
+.wraping
+  == render 'form'
+
+.links
+  = link_to t('Back'), groups_path
 
