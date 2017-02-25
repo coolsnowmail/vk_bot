@@ -4,7 +4,7 @@ RSpec.describe "bots/edit", type: :view do
   before(:each) do
     @bot = assign(:bot, Bot.create!(
       :description => "MyString",
-      :ligin_vk => "MyString",
+      :login_vk => "MyString",
       :password_vk => "MyString",
       :access_token => "MyString"
     ))
@@ -17,7 +17,7 @@ RSpec.describe "bots/edit", type: :view do
 
       assert_select "input#bot_description[name=?]", "bot[description]"
 
-      assert_select "input#bot_ligin_vk[name=?]", "bot[ligin_vk]"
+      assert_select "input#bot_login_vk[name=?]", "bot[login_vk]"
 
       assert_select "input#bot_password_vk[name=?]", "bot[password_vk]"
 

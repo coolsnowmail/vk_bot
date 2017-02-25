@@ -1,3 +1,4 @@
+p#notice = notice
 h1 Listing comments
 
 table
@@ -12,10 +13,12 @@ table
     - @comments.each do |comment|
       tr
         td = comment.text
-        td = link_to 'Show', comment
-        td = link_to 'Edit', edit_comment_path(comment)
-        td = link_to 'Destroy', comment, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to t('Show'), comment
+        td = link_to t('Edit'), edit_comment_path(comment)
+        td = link_to t('Destroy'), comment, data: { confirm: t('Are you sure') }, method: :delete
 
 br
 
-= link_to 'New Comment', new_comment_path
+= link_to t('Create'), new_comment_path
+'|
+= link_to t('Back'), task_path(@current_user.task.id)

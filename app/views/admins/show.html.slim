@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @admin.name
+p
+  strong Password:
+  = @admin.password
+
+= link_to 'Edit', edit_admin_path(@admin)
+'|
+= link_to 'Back', admins_path

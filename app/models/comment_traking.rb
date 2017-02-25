@@ -1,3 +1,3 @@
 class CommentTraking < ActiveRecord::Base
-  belong_to :bot
+  belongs_to :bot
 end

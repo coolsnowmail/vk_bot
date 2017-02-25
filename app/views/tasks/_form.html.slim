@@ -7,6 +7,6 @@
           li = message
 
   .field
-    = f.label :description
+    = f.label t('tasks.description')
     = f.text_field :description
-  .actions = f.submit
+  .actions = f.submit t('save_button')

@@ -1,3 +1,4 @@
+p#notice = notice
 h1 Listing messages
 
 table
@@ -12,10 +13,12 @@ table
     - @messages.each do |message|
       tr
         td = message.text
-        td = link_to 'Show', message
-        td = link_to 'Edit', edit_message_path(message)
-        td = link_to 'Destroy', message, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to t('Show'), message
+        td = link_to t('Edit'), edit_message_path(message)
+        td = link_to t('Destroy'), message, data: { confirm: t('Are you sure') }, method: :delete
 
 br
 
-= link_to 'New Message', new_message_path
+= link_to t('Create') , new_message_path
+'|
+= link_to t('Back'), task_path(@current_user.task.id)

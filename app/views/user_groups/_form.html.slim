@@ -7,9 +7,11 @@
           li = message
 
   .field
-    = f.label :description
+    = f.label t('user_groups.description')
     = f.text_field :description
   .field
-    = f.label :url
+    = f.label t('user_groups.url')
     = f.text_field :url
-  .actions = f.submit
+  .actions
+    = f.submit t('save_button')
+
