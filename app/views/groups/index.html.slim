@@ -1,3 +1,4 @@
+p#notice = notice
 h1 Listing groups
 
 table
@@ -12,10 +13,12 @@ table
     - @groups.each do |group|
       tr
         td = group.url
-        td = link_to 'Show', group
-        td = link_to 'Edit', edit_group_path(group)
-        td = link_to 'Destroy', group, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to t('Show'), group
+        td = link_to t('Edit'), edit_group_path(group)
+        td = link_to t('Destroy'), group, data: { confirm: t('Are you sure') }, method: :delete
 
 br
 
-= link_to 'New Group', new_group_path
+= link_to t('Create') , new_group_path
+'|
+= link_to t('Back'), task_path(@current_user.task.id)

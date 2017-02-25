@@ -1,9 +1,10 @@
 p#notice = notice
 
-p
-  strong Description:
-  = @task.description
+p = @task.description
 
-= link_to 'Edit', edit_task_path(@task)
-'|
-= link_to 'Back', tasks_path
+ul
+  li = link_to t('tasks.comments settings'), comments_path
+  li = link_to t('tasks.groups settings'), groups_path
+  li = link_to t('tasks.messages settings'), messages_path
+
+= link_to t('Back'), user_path(@task.user.id)

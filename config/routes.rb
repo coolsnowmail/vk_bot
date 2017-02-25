@@ -1,17 +1,32 @@
 Rails.application.routes.draw do
+  get 'activate_bot/activate'
+
+  resources :admins
   resources :bots
+  resources :users
+
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  controller :admin_login do
+    get 'admin_login' => :new
+    post 'admin_login' => :create
+    delete 'admin_logout' => :destroy
+  end
+
   resources :groups
   resources :comments
   resources :messages
-  resources :user_groups
-  resources :tasks
-  resources :users
-  resources :super_users
+  resources :user_groups, only: [:new,:edit, :create,:update, :destroy]
+  resources :tasks, only: [:show, :new,:edit, :create,:update, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'sessions#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

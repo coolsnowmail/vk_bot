@@ -6,9 +6,27 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+
+<body class='<%= controller.controller_name %>'>
+  <% if session[:user_id] %>
+    <div class="header">
+      <ul>
+        <li><%= link_to @current_user.name.capitalize, user_path(@current_user.id) %></li>
+        <li><%= link_to t("exit"), logout_path, method: :delete %></li>
+      </ul>
+    </div>
+  <% end %>
+  <% if session[:admin_id] %>
+    <div class="header">
+      <ul>
+        <li><%= link_to @current_admin.name.capitalize, admin_path(@current_admin.id) %></li>
+        <li><%= link_to t("exit"), admin_logout_path, method: :delete %></li>
+      </ul>
+    </div>
+  <% end %>
 
 <%= yield %>
 
 </body>
+
 </html>

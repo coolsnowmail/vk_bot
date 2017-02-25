@@ -7,12 +7,15 @@
           li = message
 
   .field
-    = f.label :login
-    = f.text_field :login
+    = f.label :name
+    = f.text_field :name
   .field
     = f.label :password
     = f.text_field :password
   .field
-    = f.label :vk_id
+    = f.label :password_confirmation
+    = f.text_field :password_confirmation
+  .field
+    = f.label "vk id"
     = f.text_field :vk_id
   .actions = f.submit

@@ -1,15 +1,49 @@
 p#notice = notice
 
-p
-  strong Login:
-  = @user.login
-p
-  strong Password:
-  = @user.password
-p
-  strong Vk:
-  = @user.vk_id
+table
+  thead
+    tr
+      th
+      th
+      th
 
-= link_to 'Edit', edit_user_path(@user)
-'|
-= link_to 'Back', users_path
+  tbody
+      tr
+        td = @current_user.user_group.description
+        td = link_to t('Edit'), edit_user_group_path(@current_user.user_group.id)
+        td = link_to t('Destroy'), @current_user.user_group, data: { confirm: t('Are you sure') }, method: :delete
+
+      tr
+        td = link_to @current_user.task.description, task_path(@current_user.task.id)
+        td = link_to t('Edit'), edit_task_path(@current_user.task.id)
+        td = link_to t('Destroy'), @current_user.task, data: { confirm: t('Are you sure') }, method: :delete
+br
+p = t('users.list of bots')
+= link_to t('Create'), new_bot_path
+-if @current_user.task.bots.any?
+  - @current_user.task.bots.each do |bot|
+    ul
+      -if bot.status == "Not Active"
+        li = bot.description + t('users.bot status') + bot.status.to_s
+        = button_to t("bots.activate bot"), activate_bot_activate_path, method: :get, params: {bot_id: bot.id}
+        = link_to t('Edit'), edit_bot_path(bot)
+        = link_to t('Destroy'), bot, data: { confirm: t('Are you sure') }, method: :delete
+      -else bot.status == "Active"
+        li = bot.description + t('users.bot status') + bot.status.to_s
+        = link_to t('Edit'), edit_bot_path(bot)
+        = link_to t('Destroy'), bot, data: { confirm: t('Are you sure') }, method: :delete
+
+-else
+  p = t('users.have no bots')
+  = link_to t('bots.Create'), new_bot_path
+br
+br
+ul
+  -if @current_user.task.groups.first == nil
+    li = t('users.proccessing group') + t('users.no any group')
+  -if @current_user.task.groups.any?
+    li = t('users.proccessing group') + @current_user.task.groups.first.url.to_s
+  li = t('users.like count') + @current_user.like_count.to_s
+  li = t('users.message count') + @current_user.message_count.to_s
+  li = t('users.comment count') + @current_user.comment_count.to_s
+
