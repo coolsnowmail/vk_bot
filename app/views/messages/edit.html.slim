@@ -1,8 +1,11 @@
-h1 Editing message
+.wraping
+  h4 = t('messages.Editing message')
 
-== render 'form'
+.alert
+  p#notice = notice
 
-= link_to 'Show', @message
-'|
-= link_to 'Back', messages_path
+.wraping
+  == render 'form'
+.links
+  = link_to t('Back'), messages_path
 

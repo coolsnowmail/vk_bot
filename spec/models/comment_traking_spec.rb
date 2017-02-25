@@ -1,5 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe CommentTraking, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe CommentTraking, :type => :model do
+  describe 'validations' do
+    it { should belong_to :task }
+  end
 end

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :group do
-    url "MyString"
+  factory :group, class: 'Group' do
+    sequence(:url) { |i| "https://vk.com/club#{i}"}
   end
 end

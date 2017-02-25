@@ -1,21 +1,20 @@
-h1 Listing groups
+.alert
+  p#notice = notice
 
-table
-  thead
-    tr
-      th Url
-      th
-      th
-      th
 
-  tbody
-    - @groups.each do |group|
-      tr
-        td = group.url
-        td = link_to 'Show', group
-        td = link_to 'Edit', edit_group_path(group)
-        td = link_to 'Destroy', group, data: { confirm: 'Are you sure?' }, method: :delete
+h4 = t('groups.Listing groups')
 
-br
+ul.comments-box
+  - @groups.each do |group|
+    li.comment-box id='group_#{group.id}'
+      .comment-description
+        span = group.url
+      .comment-maneger
+        = link_to t('Edit'), edit_group_path(group)
+        = link_to t('Destroy'), group, data: { confirm: t('Are you sure') }, method: :delete, remote: true
 
-= link_to 'New Group', new_group_path
+
+.links
+  = link_to t('Create') , new_group_path
+  '|
+  = link_to t('Back'), @current_user

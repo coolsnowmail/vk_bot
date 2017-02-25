@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :task do
-    description "MyString"
+  factory :task, class: 'Task' do
+    description 'description'
   end
 end

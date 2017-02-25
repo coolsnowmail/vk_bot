@@ -1,3 +1,3 @@
 class MessageTraking < ActiveRecord::Base
-  belong_to :bot
+  belongs_to :task
 end
