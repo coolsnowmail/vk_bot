@@ -11,16 +11,16 @@
   <% if session[:user_id] %>
     <div class="header">
       <ul>
-        <li><%= link_to @current_user.name.capitalize, user_path(@current_user.id) %></li>
-        <li><%= link_to t("exit"), logout_path, method: :delete %></li>
+        <li><%= link_to @current_user.name.capitalize, user_path(@current_user.id) %></li><!--
+     --><li><%= link_to t("exit"), logout_path, method: :delete %></li>
       </ul>
     </div>
   <% end %>
   <% if session[:admin_id] %>
     <div class="header">
       <ul>
-        <li><%= link_to @current_admin.name.capitalize, admin_path(@current_admin.id) %></li>
-        <li><%= link_to t("exit"), admin_logout_path, method: :delete %></li>
+        <li><%= link_to @current_admin.name.capitalize, admin_path(@current_admin.id) %></li><!--
+     --><li><%= link_to t("exit"), admin_logout_path, method: :delete %></li>
       </ul>
     </div>
   <% end %>

@@ -10,10 +10,14 @@ ru:
   Edit: "редактировать"
   save_button: "Сохранить"
   admin:
+    password: "Новый пароль"
+    confirm password: "Подтвердить пароль"
+    there are not any users: "У Вас нет ни одного пользователя"
+    cannot delete admin: "Нельзя удалить администратора"
     admin vk id: "Ваш ID ВКОНТАКТЕ: "
     list of users: "Список ваших пользователей: "
     name: "Имя"
-    vk id: "vk id"
+    vk id: "vk.com id"
     user group: "Группа пользователя"
     New User: "Новый пользователь"
     user group is empty: "отсутствует"
@@ -77,3 +81,10 @@ ru:
     was successfully updated: "Сообщение обновленно"
     was successfully destroyed: "Сообщение удаленно"
     create a new message: "Чтобы все заработало неодходимо придумать хотябы пару сообщений, которые будут отправляться людям для репламмы вашего сообщества!"
+  activerecord:
+    errors:
+      models:
+        admin:
+          attributes:
+            password_confirmation:
+              confirmation: "is not found"

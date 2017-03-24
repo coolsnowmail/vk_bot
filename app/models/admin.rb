@@ -5,6 +5,6 @@ class Admin < ActiveRecord::Base
   before_destroy :check_if_last_admin
 
   def check_if_last_admin
-    return false if Admin.all.size <= 1
+    return false if Admin.all.size <= 2
   end
 end

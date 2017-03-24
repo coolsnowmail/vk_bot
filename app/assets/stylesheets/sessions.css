@@ -6,7 +6,7 @@
   line-height: 50px;
 }
 
-.session_header a {
+.session_header li {
   color: #000000;
   text-decoration: none;
   margin-right: 50px;
@@ -54,6 +54,13 @@ lable {
 /* .singup lable input[type="text"]:focus {
   border: 3px solid #87D37C;
 } */
+#name:focus{
+  border: 2px solid #00B16A;
+}
+
+#password:focus{
+  border: 2px solid #00B16A;
+}
 
 .singup-submit {
   display: block;
