@@ -5,21 +5,22 @@
       - @admin.errors.full_messages.each do |message|
         li = message
 
-= form_for @admin, class: "admin-form" do |f|
-  label
-    = t("admin.name")
+= form_for @admin, class: "forma" do |f|
+
+  .field
+    label = t("admin.name")
     = f.text_field :name
 
-  label
-    = t("admin.vk id")
+  .field
+    label = t("admin.vk id")
     = f.text_field :vk_id
 
-  label
-    = t("admin.password")
+  .field
+    label = t("admin.password")
     = f.text_field :password
 
-  label
-    = t("admin.confirm password")
+  .field
+    label = t("admin.confirm password")
     = f.text_field :password_confirmation
 
-  = f.submit t("save_button"), class: "admin_submit"
+  .actions = f.submit t("save_button"), class: "button"

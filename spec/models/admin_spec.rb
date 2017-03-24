@@ -14,13 +14,14 @@ RSpec.describe Admin, :type => :model do
     let!(:admin2) { create(:admin) }
     let!(:admin3) { create(:admin) }
     it 'should delete admin' do
-
-      expect(admin1.destroy!).to eq(true)
+      admin1.delete
+      expect(Admin.all.size).to eq(2)
     end
 
-    # it 'should check check_if_last_admin method' do
-    #   admin2.destroy
-    #   expect(admin2.present?).to eq(true)
-    # end
+    it 'should check to not alow delete admin if admins <= 2' do
+      admin1.destroy
+      admin2.destroy
+      expect(Admin.all.size).to eq(2)
+    end
   end
 end

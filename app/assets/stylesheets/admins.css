@@ -1,9 +1,14 @@
-form {
+/* form {
   max-width: 600px;
   min-height: 200px;
   margin: 30px auto;
   border-radius: 10px 10px; 10px 10px;
   background: #C8F7C5;
+} */
+.wraping {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 #title {
@@ -125,4 +130,15 @@ ul.admin-box li a {
 
 .new_user a {
   color: #26A65B;
+}
+
+.button {
+  display: block;
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: #87D37C;
+  font-size: 16px;
+  border: 0;
+  float: right;
+  margin-right: 20px;
 }

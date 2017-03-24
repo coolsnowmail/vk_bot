@@ -10,13 +10,16 @@
     = f.label :description
     = f.text_field :description
   .field
+    = f.label :vk_id
+    = f.text_field :vk_id
+  .field
+    = f.label :access_token
+    = f.password_field :access_token
+  .field
     = f.label :login_vk
     = f.text_field :login_vk
   .field
     = f.label :password_vk
     = f.password_field :password_vk
-  .field
-    = f.label :access_token
-    = f.password_field :access_token
 
   .actions = f.submit t('save_button')

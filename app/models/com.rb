@@ -4,7 +4,7 @@ class Com < ActiveRecord::Base
     if bot
       if bot.check_com_limit < 39
         uri = URI.parse("https://api.vk.com/method/groups.get")
-        response = Net::HTTP.post_form(uri, {"user_id" => bot.vk_id,
+        response = Net::HTTP.post_form(uri, {
             "offset" => 0,
             "count" => 1000,
             "access_token" => bot.access_token,
