@@ -1,4 +1,4 @@
-= form_for @comment do |f|
+.alert
   - if @comment.errors.any?
     #error_explanation
       h2 = "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
@@ -6,7 +6,8 @@
         - @comment.errors.full_messages.each do |message|
           li = message
 
+= form_for @comment, html: {class: "forma"} do |f|
   .field
     = f.label :text
     = f.text_field :text
-  .actions = f.submit t('Create')
+  .actions = f.submit t('Create'), class: "button"

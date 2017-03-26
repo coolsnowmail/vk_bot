@@ -72,6 +72,8 @@ ru:
     was successfully updated: "Бот обновленна"
     was successfully destroyed: "Бот удаленна"
   comments:
+    New comment: "Новый коментарий"
+    Listing comments: "Мои коментарии"
     create a new comment: "Чтобы все заработало неодходимо создать комметарий для бота, которые будут отправляться сообветствующую группу с просьбой о вступлении в ваше сообшество!"
     was successfully created: "Комментарий создана"
     was successfully updated: "Комментарий обновленна"
