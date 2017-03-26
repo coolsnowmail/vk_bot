@@ -5,7 +5,7 @@
       - @admin.errors.full_messages.each do |message|
         li = message
 
-= form_for @admin, class: "forma" do |f|
+= form_for @admin, html: {class: "forma"} do |f|
 
   .field
     label = t("admin.name")

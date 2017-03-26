@@ -6,16 +6,16 @@ div class="alert"
     p =flash[:alert]
 
 div class="singup"
-  =form_tag(class: "singup-form") do
+  =form_tag do
 
     h6 class="singup-title" = t('sessions.authorize pls')
 
-    lable
-      = t('sessions.name')
+    .singup-field
+      lable= t('sessions.name')
       = text_field_tag :name, params[:name]
 
-    lable
-      = t('sessions.password')
+    .singup-field
+      lable = t('sessions.password')
       = password_field_tag :password, params[:password]
 
-    =submit_tag t('sessions.enter'), class: "singup-submit"
+    .action-login =submit_tag t('sessions.enter'), class: "button-login"

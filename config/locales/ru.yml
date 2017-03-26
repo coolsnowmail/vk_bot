@@ -27,6 +27,8 @@ ru:
     authorize pls: "Пройдите авторизацию"
     enter: "Войти"
   users:
+    name: "Логин"
+    vk id: "vk.com id"
     have no bots: "У вас нет ни одного бота"
     no any group: "Вы не вписали еще ни одной группы"
     proccessing group: "Группа в обработке: "

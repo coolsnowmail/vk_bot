@@ -7,15 +7,15 @@
 
 = form_for @user, html: {class: "forma"} do |f|
   .field
-    = f.label :name
+    label = t("users.name")
     = f.text_field :name
   .field
-    = f.label "vk id"
+    label = t("users.vk id")
     = f.text_field :vk_id
   .field
-    = f.label :password
+    label = t("admin.password")
     = f.text_field :password
   .field
-    = f.label :password_confirmation
+    label = t("admin.confirm password")
     = f.text_field :password_confirmation
-  .actions = f.submit(class: "button")
+  .actions = f.submit t("save_button"), class: "button"

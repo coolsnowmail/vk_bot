@@ -68,7 +68,10 @@ html, body {
 .forma {
   display: flex;
   flex-direction: column;
-  width: 380px;
+  width: 400px;
+  background: #eeeeee;
+  border-radius: 10px;
+  padding: 10px 20px;
 }
 
 .field {
@@ -95,7 +98,11 @@ input {
 }
 
 form {
-  background: #eeeeee;
-  border-radius: 10px;
-  padding: 10px 20px;
+
+}
+
+.wraping {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }

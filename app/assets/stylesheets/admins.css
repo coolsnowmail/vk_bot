@@ -1,16 +1,3 @@
-/* form {
-  max-width: 600px;
-  min-height: 200px;
-  margin: 30px auto;
-  border-radius: 10px 10px; 10px 10px;
-  background: #C8F7C5;
-} */
-.wraping {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-}
-
 #title {
   text-align: center;
 }
