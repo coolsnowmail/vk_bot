@@ -5,8 +5,11 @@ class BotCycle < ActiveRecord::Base
       Like.make(bot_id)
       puts "like"
 
-      Msg.make(bot_id)
-      puts "message"
+      last_records_count = bot.task.message_trakings.where(bot_id: bot.id).order(:created_at).size
+      while last_records_count == bot.task.message_trakings.where(bot_id: bot.id).order(:created_at).size do
+        eval("Msg" + bot.task.user.id.to_s).make(bot_id)
+        puts "message"
+      end
 
       Like.make(bot_id)
       puts "like"
