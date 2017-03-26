@@ -50,4 +50,9 @@ ul.user-ul li {
 .task-info {
   background: #F1A9A0;
   margin-top: 30px;
+  padding: 5px;
+}
+
+.bot-descript {
+  flex-grow: 2;
 }

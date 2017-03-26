@@ -1,8 +1,11 @@
-h1 Editing bot
+- if @bot.errors.any?
+  .alert
+    h2 = "#{pluralize(@bot.errors.count, "error")} prohibited this bot from being saved:"
+    ul
+      - @bot.errors.full_messages.each do |message|
+        li = message
 
-== render 'form'
+.wraping
+  == render 'form'
 
-= link_to t('Show'), @bot
-'|
-= link_to t('Back'), bots_path
 

@@ -1,7 +1,9 @@
-div
-  -if flash[:alert]
-    p =flash[:alert]
+-if flash[:alert]
+  .wraping
+    .alert
+      p =flash[:alert]
 
-== render 'form'
+.wraping
+  == render 'form'
 
 

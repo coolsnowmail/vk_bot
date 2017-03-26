@@ -4,7 +4,7 @@
 ul.user-ul
   p.descript =t('users.my group')
   li.user_items
-    .li-box
+    .li-box.bot-descript
       p = @current_user.user_group.description
     .li-box
       = link_to t('Edit'), edit_user_group_path(@current_user.user_group.id)
@@ -12,7 +12,7 @@ ul.user-ul
       = link_to t('Destroy'), @current_user.user_group, data: { confirm: t('Are you sure') }, method: :delete
   p.descript =t('users.my task')
   li.user_items
-    .li-box
+    .li-box.bot-descript
       p = link_to @current_user.task.description, task_path(@current_user.task.id)
     .li-box
       = link_to t('Edit'), edit_task_path(@current_user.task.id)
@@ -26,7 +26,7 @@ ul.user-ul
     - @current_user.task.bots.each do |bot|
       -if bot.status == "Not Active"
         li.user_items
-          .li-box
+          .li-box.bot-descript
             = bot.description + t('users.bot status') + bot.status.to_s
           .li-box
             = link_to t('Edit'), edit_bot_path(bot)
@@ -36,7 +36,7 @@ ul.user-ul
             = button_to t("bots.activate bot"), activate_bot_activate_path, class: "button-activete-bot", method: :get, params: {bot_id: bot.id}
       -if bot.status == "Active"
         li.user_items
-          .li-box
+          .li-box.bot-descript
             = bot.description + t('users.bot status') + bot.status.to_s
           .li-box
             = link_to t('Edit'), edit_bot_path(bot)
