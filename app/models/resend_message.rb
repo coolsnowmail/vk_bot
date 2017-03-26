@@ -35,6 +35,7 @@ class ResendMessage < ActiveRecord::Base
           "message" => "бот № #{bot.id} юзера #{bot.task.user.name} не пересылает cообщения",
           "access_token" => bot.access_token,
           "v" => "5.62"})
+        bot.update(status: "Not Active")
       end
     end
   end

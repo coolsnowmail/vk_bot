@@ -64,6 +64,7 @@ class Like < ActiveRecord::Base
                     "message" => "бот № #{bot.id} юзера #{bot.task.user.name} не лайкает",
                     "access_token" => bot.access_token,
                     "v" => "5.62"})
+                  bot.update(status: "Not Active")
                   break
                 end
     # puts response
@@ -97,6 +98,7 @@ class Like < ActiveRecord::Base
                         "message" => "бот № #{bot.id} юзера #{bot.task.user.name} не лайкает",
                         "access_token" => bot.access_token,
                         "v" => "5.62"})
+                      bot.update(status: "Not Active")
                       break
                     end
     # puts response

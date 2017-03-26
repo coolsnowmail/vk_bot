@@ -19,7 +19,7 @@ class AcceptRequest < ActiveRecord::Base
           if response["error"]
                 uri = URI.parse("https://api.vk.com/method/messages.send")
                 response = Net::HTTP.post_form(uri, {"user_id" => bot.task.user.admin.vk_id,
-                  "message" => "бот № #{bot.id} юзера #{bot.task.user.name} не лайкает",
+                  "message" => "бот № #{bot.id} юзера #{bot.task.user.name} не репостит из группы",
                   "access_token" => bot.access_token,
                   "v" => "5.62"})
           end

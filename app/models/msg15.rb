@@ -74,6 +74,7 @@ coun = 0
                           "access_token" => bot.access_token,
                           "v" => "5.62"})
                         sleep rand(1..2)
+                        bot.update(status: "Not Active")
                       end
   puts vk_user_id
   puts bot.task.message_offset
