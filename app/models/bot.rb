@@ -4,7 +4,6 @@ class Bot < ActiveRecord::Base
   validates :status, inclusion: {in: Bot.statuses.keys}
   validates :description, presence: true
   validates :description, uniqueness: true
-  validates :access_token, presence: true
   validates :access_token, uniqueness: true
 
 

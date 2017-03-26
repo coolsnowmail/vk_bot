@@ -1,4 +1,5 @@
 ru:
+  admin for: "Вы администратор?"
   admin enter: "Войти как администратор"
   user enter: "Войти как пользователь"
   exit: "Выход"
@@ -27,6 +28,8 @@ ru:
     authorize pls: "Пройдите авторизацию"
     enter: "Войти"
   users:
+    my group: "Моя группа"
+    my task: "Моя задача"
     name: "Логин"
     vk id: "vk.com id"
     have no bots: "У вас нет ни одного бота"

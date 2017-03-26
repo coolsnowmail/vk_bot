@@ -1,49 +1,57 @@
-p#notice = notice
+.alert
+  p#notice = notice
 
-table
-  thead
-    tr
-      th
-      th
-      th
+ul.user-ul
+  p.descript =t('users.my group')
+  li.user_items
+    .li-box
+      p = @current_user.user_group.description
+    .li-box
+      = link_to t('Edit'), edit_user_group_path(@current_user.user_group.id)
+    .li-box
+      = link_to t('Destroy'), @current_user.user_group, data: { confirm: t('Are you sure') }, method: :delete
+  p.descript =t('users.my task')
+  li.user_items
+    .li-box
+      p = link_to @current_user.task.description, task_path(@current_user.task.id)
+    .li-box
+      = link_to t('Edit'), edit_task_path(@current_user.task.id)
+    .li-box
+      = link_to t('Destroy'), @current_user.task, data: { confirm: t('Are you sure') }, method: :delete
 
-  tbody
-      tr
-        td = @current_user.user_group.description
-        td = link_to t('Edit'), edit_user_group_path(@current_user.user_group.id)
-        td = link_to t('Destroy'), @current_user.user_group, data: { confirm: t('Are you sure') }, method: :delete
+  p.descript =t('users.list of bots')
+  = link_to t('Create'), new_bot_path
 
-      tr
-        td = link_to @current_user.task.description, task_path(@current_user.task.id)
-        td = link_to t('Edit'), edit_task_path(@current_user.task.id)
-        td = link_to t('Destroy'), @current_user.task, data: { confirm: t('Are you sure') }, method: :delete
-br
-p = t('users.list of bots')
-= link_to t('Create'), new_bot_path
--if @current_user.task.bots.any?
-  - @current_user.task.bots.each do |bot|
-    ul
+  -if @current_user.task.bots.any?
+    - @current_user.task.bots.each do |bot|
       -if bot.status == "Not Active"
-        li = bot.description + t('users.bot status') + bot.status.to_s
-        = button_to t("bots.activate bot"), activate_bot_activate_path, method: :get, params: {bot_id: bot.id}
-        = link_to t('Edit'), edit_bot_path(bot)
-        = link_to t('Destroy'), bot, data: { confirm: t('Are you sure') }, method: :delete
-      -else bot.status == "Active"
-        li = bot.description + t('users.bot status') + bot.status.to_s
-        = link_to t('Edit'), edit_bot_path(bot)
-        = link_to t('Destroy'), bot, data: { confirm: t('Are you sure') }, method: :delete
+        li.user_items
+          .li-box
+            = bot.description + t('users.bot status') + bot.status.to_s
+          .li-box
+            = link_to t('Edit'), edit_bot_path(bot)
+          .li-box
+            = link_to t('Destroy'), bot, data: { confirm: t('Are you sure') }, method: :delete
+          .li-box
+            = button_to t("bots.activate bot"), activate_bot_activate_path, class: "button-activete-bot", method: :get, params: {bot_id: bot.id}
+      -if bot.status == "Active"
+        li.user_items
+          .li-box
+            = bot.description + t('users.bot status') + bot.status.to_s
+          .li-box
+            = link_to t('Edit'), edit_bot_path(bot)
+          .li-box
+            = link_to t('Destroy'), bot, data: { confirm: t('Are you sure') }, method: :delete
+  -else
+    p.descript-alert = t('users.have no bots')
 
--else
-  p = t('users.have no bots')
-  = link_to t('bots.Create'), new_bot_path
-br
-br
-ul
   -if @current_user.task.groups.first == nil
-    li = t('users.proccessing group') + t('users.no any group')
+    span.task-info
+      li.user_items = t('users.proccessing group') + t('users.no any group')
   -if @current_user.task.groups.any?
-    li = t('users.proccessing group') + @current_user.task.groups.first.url.to_s
-  li = t('users.like count') + @current_user.like_count.to_s
-  li = t('users.message count') + @current_user.message_count.to_s
-  li = t('users.comment count') + @current_user.comment_count.to_s
+    span.task-info
+      li.user_items = t('users.proccessing group') + @current_user.task.groups.first.url.to_s
+      li.user_items = t('users.like count') + @current_user.like_count.to_s
+      li.user_items = t('users.message count') + @current_user.message_count.to_s
+      li.user_items = t('users.comment count') + @current_user.comment_count.to_s
 
