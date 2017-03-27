@@ -5,7 +5,7 @@ ul.user-ul
   p.descript =t('users.my group')
   li.user_items
     .li-box.bot-descript
-      p = @current_user.user_group.description
+      p = link_to @current_user.user_group.description, "https://vk.com/club" + @current_user.user_group.url, target: "_blank"
     .li-box
       = link_to t('Edit'), edit_user_group_path(@current_user.user_group.id)
     .li-box

@@ -8,6 +8,6 @@
 
 = form_for @group, html: {class: "forma"} do |f|
   .field
-    = f.label :url
+    = f.label t("groups.url")
     = f.text_field :url
   .actions = f.submit t('Create'), class: "button"

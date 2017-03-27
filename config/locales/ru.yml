@@ -61,6 +61,10 @@ ru:
     groups settings: "Настройка групп поиска для ботов"
     bots settings: "Настройка ботов"
   bots:
+    password_vk: "Пароль бота ВКОНТАКТЕ"
+    login_vk: "Логин бота ВКОНТАКТЕ"
+    access_token: "access_token"
+    description: "Имя бота"
     activate error: "Ошибка активации бота"
     bot activated: "Бот активирован"
     access token error: "Неверный access token. Пожалуйста, исправте access token бота ВКОНТАКТЕ"
@@ -80,6 +84,7 @@ ru:
     was successfully updated: "Комментарий обновлен"
     was successfully destroyed: "Комментарий удален"
   groups:
+    url: "Полная ссылка на группу, члены которой, вы хотите, были пролайканы"
     Editing group: "Редактирование группы"
     Listing groups: "Списов групп для обработки лайкими"
     New group: "Сохраните ссылки на группу ВКОНТАКТЕ, члены которой, вы хотите, были пролайканы"
@@ -102,3 +107,17 @@ ru:
           attributes:
             password_confirmation:
               confirmation: "is not found"
+        bot:
+          attributes:
+            description:
+              blank: "Бот не может быть без имени"
+            access_token:
+              taken: "У Вас уже есть бот с таким access token"
+        comment:
+          attributes:
+            text:
+              blank: "Вы не можете создать пустой комментарий"
+        message:
+          attributes:
+            text:
+              blank: "Вы не можете создать пустое сообщение"
