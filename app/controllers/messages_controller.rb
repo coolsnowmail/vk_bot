@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: t('messages.was successfully created') }
+        format.html { redirect_to messages_path, notice: t('messages.was successfully created') }
       else
         format.html { render :new }
       end
@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
   def update
     respond_to do |format|
       if @message.update(message_params)
-        format.html { redirect_to @message, notice: t('messages.was successfully updated') }
+        format.html { redirect_to messages_path, notice: t('messages.was successfully updated') }
       else
         format.html { render :edit }
       end

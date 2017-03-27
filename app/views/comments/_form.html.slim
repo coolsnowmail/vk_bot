@@ -9,5 +9,5 @@
 = form_for @comment, html: {class: "forma"} do |f|
   .field
     = f.label :text
-    = f.text_field :text
+    = f.text_area :text, rows: 20, cols: 45
   .actions = f.submit t('Create'), class: "button"

@@ -1,24 +1,21 @@
-p#notice = notice
-h1 Listing messages
+.alert
+  p#notice = notice
 
-table
-  thead
-    tr
-      th Text
-      th
-      th
-      th
 
-  tbody
-    - @messages.each do |message|
-      tr
-        td = message.text
-        td = link_to t('Show'), message
-        td = link_to t('Edit'), edit_message_path(message)
-        td = link_to t('Destroy'), message, data: { confirm: t('Are you sure') }, method: :delete
+h4 =t('messages.Listing messages')
+
+
+ul.comments-box
+  - @messages.each do |message|
+      li.comment-box
+        .comment-description
+          span = message.text
+        .comment-maneger
+          = link_to t('Edit'), edit_message_path(message)
+          = link_to t('Destroy'), message, data: { confirm: t('Are you sure') }, method: :delete
 
 br
-
-= link_to t('Create') , new_message_path
-'|
-= link_to t('Back'), task_path(@current_user.task.id)
+.links
+  = link_to t('Create') , new_message_path
+  '|
+  = link_to t('Back'), task_path(@current_user.task.id)

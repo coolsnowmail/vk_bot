@@ -1,10 +1,10 @@
 .wraping
-  h3 =t('comments.New comment')
+  h4 =t('comments.New comment')
 .alert
   p#notice = notice
 
 .wraping
   == render 'form'
 
-.wraping
+.links
   = link_to t('Back'), comments_path, class: "link_back"

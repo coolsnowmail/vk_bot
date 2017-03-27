@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: t('comments.was successfully created') }
+        format.html { redirect_to comments_path, notice: t('comments.was successfully created') }
       else
         format.html { render :new }
       end
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: t('comments.was successfully updated') }
+        format.html { redirect_to comments_path, notice: t('comments.was successfully updated') }
       else
         format.html { render :edit }
       end

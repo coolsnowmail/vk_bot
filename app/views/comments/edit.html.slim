@@ -1,8 +1,11 @@
-h1 Editing comment
+.wraping
+  h4 =t('comments.edit comment')
+.alert
+  p#notice = notice
 
-== render 'form'
+.wraping
+  == render 'form'
 
-= link_to t('Show'), @comment
-'|
-= link_to t('Back'), comments_path
+.links
+  = link_to t('Back'), comments_path
 
