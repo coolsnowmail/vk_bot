@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.user_line:hover {
+  background: #DCC6E0;
+}
+
 label {
   width: 100%;
   padding: 5px 20px;
@@ -79,16 +83,15 @@ ul.admin-box li {
   list-style: none;
   padding: 10px 20px;
   width: 100%;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 ul.admin-box li p {
   font-size: 15px;
 }
 
-ul.admin-box li p span {
 
-}
+
 
 ul.admin-box li span {
   width: 150px;

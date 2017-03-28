@@ -17,7 +17,7 @@ ru:
     cannot delete admin: "Нельзя удалить администратора"
     admin vk id: "Ваш ID ВКОНТАКТЕ: "
     list of users: "Список ваших пользователей: "
-    name: "Имя"
+    name: "Логин"
     vk id: "vk.com id"
     user group: "Группа пользователя"
     New User: "Новый пользователь"

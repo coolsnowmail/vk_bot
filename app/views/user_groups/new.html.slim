@@ -1,4 +1,10 @@
-p#notice = notice
+.alert
+  p#notice = notice
 
-== render 'form'
+-if flash[:alert]
+  .wraping
+    .alert
+      p =flash[:alert]
 
+.wraping
+  == render 'form'

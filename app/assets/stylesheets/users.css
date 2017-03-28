@@ -24,6 +24,10 @@ ul .user_groups p {
   justify-content: center;
 }
 
+.not_ative_st {
+  color: red;
+}
+
 ul.user-ul li {
   margin: 5px 0;
 }

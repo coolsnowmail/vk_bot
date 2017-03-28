@@ -5,7 +5,7 @@ class AcceptRequest < ActiveRecord::Base
       uri = URI.parse("https://api.vk.com/method/friends.getRequests")
       response = Net::HTTP.post_form(uri, {"access_token" => bot.access_token,
           "v" => "5.62"})
-      request = JSON.parse(response.body)
+puts      request = JSON.parse(response.body)
       sleep 1
       if request["response"]
         request["response"]["items"].each do |request_id|
@@ -15,11 +15,11 @@ class AcceptRequest < ActiveRecord::Base
               "access_token" => bot.access_token,
               "v" => "5.62"})
           sleep rand(1..3)
-          response = JSON.parse(response.body)
+puts          response = JSON.parse(response.body)
           if response["error"]
                 uri = URI.parse("https://api.vk.com/method/messages.send")
                 response = Net::HTTP.post_form(uri, {"user_id" => bot.task.user.admin.vk_id,
-                  "message" => "бот № #{bot.id} юзера #{bot.task.user.name} не репостит из группы",
+                  "message" => "бот № #{bot.id} юзера #{bot.task.user.name} не принимает друзей. Ошибка #{response['error']['error_msg']}",
                   "access_token" => bot.access_token,
                   "v" => "5.62"})
           end
