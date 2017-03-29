@@ -23,6 +23,7 @@ class BotsController < ApplicationController
     respond_to do |format|
       if @bot.save
         format.html { redirect_to @current_user, notice: t('bots.was successfully created') }
+        format.js
       else
         format.html { render :new }
       end
@@ -43,6 +44,7 @@ class BotsController < ApplicationController
     @bot.destroy
     respond_to do |format|
       format.html { redirect_to @current_user, notice: t('bots.was successfully destroyed') }
+      format.js
     end
   end
 

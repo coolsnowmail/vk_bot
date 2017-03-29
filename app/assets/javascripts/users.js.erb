@@ -1,0 +1,10 @@
+$(document).change(function() {
+  if ($('#new_bot').length){
+    $('#back').click(function() {
+      $('#new_bot').remove();
+      $('#new_bot_link').show();
+      $('#back').empty();
+    });
+  };
+});
+
