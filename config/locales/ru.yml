@@ -110,6 +110,7 @@ ru:
         bot:
           attributes:
             description:
+              taken: "У Вас уже есть бот с таким названием"
               blank: "Бот не может быть без имени"
             access_token:
               taken: "У Вас уже есть бот с таким access token"

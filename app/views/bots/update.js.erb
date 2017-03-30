@@ -1,4 +1,4 @@
-if('<%= @bot.persisted? %>' == "true") {
+if('<%= @bot.valid? %>' == "true") {
   $('.forma').remove();
   $('#back').remove();
   $('#new_bot_link').show();
@@ -7,14 +7,8 @@ if('<%= @bot.persisted? %>' == "true") {
   $('#bot_<%=@bot.id%>').animate({'background-color':'#E4F1FE'}, 500);
 };
 
-if('<%= @bot.persisted?%>' == "false") {
+if('<%= @bot.valid?%>' == "false") {
   $('.forma').remove();
   $('#back').remove();
   $('#new_bot_link').hide().after('<%= j render("form") %>');
 };
-
-
-
-
-
-

@@ -1,11 +1,11 @@
 -if @current_user.task.bots.any?
-  - @current_user.task.bots.each do |bot|
+  - @current_user.task.bots.order(:created_at).each do |bot|
     -if bot.status == "Not Active"
       li.user_items.user_line id="bot_#{bot.id}"
         .li-box.bot-descript
           span.not_ative_st = bot.description + t('users.bot status') + bot.status.to_s
         .li-box
-          = link_to t('Edit'), edit_bot_path(bot)
+          = link_to t('Edit'), edit_bot_path(bot), remote: true
         .li-box
           = link_to t('Destroy'), bot, data: { confirm: t('Are you sure') }, method: :delete, remote: true
         .li-box
@@ -17,7 +17,7 @@
         .li-box.bot-descript
           = bot.description + t('users.bot status') + bot.status.to_s
         .li-box
-          = link_to t('Edit'), edit_bot_path(bot)
+          = link_to t('Edit'), edit_bot_path(bot), remote: true
         .li-box
           = link_to t('Destroy'), bot, data: { confirm: t('Are you sure') }, method: :delete, remote: true
 -else

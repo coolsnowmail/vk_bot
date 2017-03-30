@@ -2,6 +2,10 @@ ul .user_groups p {
   display: inline-block;
 }
 
+#error_explanation ul{
+  list-style-type: none;
+}
+
 .user_items {
   display: flex;
   justify-content: space-between;

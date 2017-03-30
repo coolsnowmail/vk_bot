@@ -1,9 +1,9 @@
 $(document).change(function() {
-  if ($('#new_bot').length){
+  if ($('#new_bot')) {
     $('#back').click(function() {
-      $('#new_bot').remove();
+      $('.forma').remove();
       $('#new_bot_link').show();
-      $('#back').empty();
+      $('#back').remove();
     });
   };
 });

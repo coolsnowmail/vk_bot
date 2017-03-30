@@ -11,10 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui/effects/effect-blind
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
 
-$( "p#idid" ).click(function() {
-  alert( "Handler for .click() called." );
-});

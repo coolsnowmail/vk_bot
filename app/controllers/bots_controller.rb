@@ -25,7 +25,7 @@ class BotsController < ApplicationController
         format.html { redirect_to @current_user, notice: t('bots.was successfully created') }
         format.js
       else
-        format.html { render :new }
+        format.js
       end
     end
   end
@@ -34,8 +34,9 @@ class BotsController < ApplicationController
     respond_to do |format|
       if @bot.update(bot_params)
         format.html { redirect_to @current_user, notice: t('bots.was successfully updated') }
+        format.js
       else
-        format.html { render :edit }
+        format.js
       end
     end
   end
