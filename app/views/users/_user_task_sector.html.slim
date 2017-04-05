@@ -1,0 +1,7 @@
+li.user_items#user_task_sector
+  .li-box.bot-descript
+    p = link_to @current_user.task.description, task_path(@current_user.task.id)
+  .li-box
+    = link_to t('Edit'), edit_task_path(@current_user.task.id), remote: true
+  .li-box
+    = link_to t('Destroy'), @current_user.task, data: { confirm: t('Are you sure') }, method: :delete

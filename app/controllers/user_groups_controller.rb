@@ -28,6 +28,7 @@ class UserGroupsController < ApplicationController
     respond_to do |format|
       if @current_user.user_group.update(user_group_params)
         format.html { redirect_to user_url(@current_user.id), notice: t('user_groups.successfully updated') }
+        format.js
       else
         format.html { render :edit }
       end

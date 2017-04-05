@@ -8,4 +8,12 @@ class Task < ActiveRecord::Base
   has_many :groups, dependent: :destroy
   has_many :bots, dependent: :destroy
   validates :description, presence: true
+
+  def any_active_bot?
+    if bots.any?
+      bots.where(status: 3).any?
+    else
+      false
+    end
+  end
 end

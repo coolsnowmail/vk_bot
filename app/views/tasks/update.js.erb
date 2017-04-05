@@ -1,0 +1,13 @@
+if( <%= @task.valid? %> ) {
+  $('.forma').remove();
+  $('#task_back').remove();
+  $('#user_task_sector').remove();
+  $('#ffff').after('<%= j render("users/user_task_sector") %>');
+};
+
+if(<%= @task.valid?%> == false) {
+  $('.forma').remove();
+  $('#task_back').remove();
+  $('#user_task_sector').hide();
+  $('#ffff').after('<%= j render("tasks/form") %>');
+};

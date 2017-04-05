@@ -122,3 +122,7 @@ ru:
           attributes:
             text:
               blank: "Вы не можете создать пустое сообщение"
+        task:
+          attributes:
+            description:
+              blank: "Вы не можете создать задачу без названия"

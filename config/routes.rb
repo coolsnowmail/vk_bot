@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'activate_bot/activate'
+  get 'tasks/refresh_part'
 
   resources :admins
   resources :bots

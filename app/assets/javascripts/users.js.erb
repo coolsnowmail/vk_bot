@@ -1,10 +1,39 @@
-$(document).change(function() {
-  if ($('#new_bot')) {
+$(document).ready(function() {
+  if ($('#task_infor').length) {
+    setInterval(function(){
+      $.ajax({
+      url: "http://localhost:3000/tasks/refresh_part"
+      });
+      }, 20000);
+  };
+
+  if($("#backyyy").length > 0) {
+    alert('sdfsdfsdf');
+  }
+});
+
+$(document).bind('DOMSubtreeModified', function () {
+  if ($("#backyyy").length) {
+    $("#backyyy").click(function() {
+      $('.forma').remove();
+      $('#user_group_sector').show();
+      $('#backyyy').remove();
+    });
+  };
+
+  if($('#back').length) {
     $('#back').click(function() {
       $('.forma').remove();
       $('#new_bot_link').show();
       $('#back').remove();
     });
   };
-});
 
+  if($('#task_back').length) {
+    $('#task_back').click(function() {
+      $('.forma').remove();
+      $('#user_task_sector').show();
+      $('#task_back').remove();
+    });
+  };
+});

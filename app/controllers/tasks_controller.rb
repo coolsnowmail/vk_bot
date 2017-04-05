@@ -28,8 +28,9 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to user_url(@current_user.id), notice: t('tasks.task updated') }
+        format.js
       else
-        format.html { render :edit }
+        format.js
       end
     end
   end
@@ -38,6 +39,12 @@ class TasksController < ApplicationController
     @task.destroy
     respond_to do |format|
       format.html { redirect_to user_url(@current_user.id), notice: t('tasks.successfully destroyed') }
+    end
+  end
+
+  def refresh_part
+    respond_to do |format|
+      format.js
     end
   end
 

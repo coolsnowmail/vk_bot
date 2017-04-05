@@ -1,12 +1,14 @@
+.wraping#task_back <<<<<
 
-- if @task.errors.any?
+
+= form_for @task, html: {class: "forma"}, remote: true do |f|
   .alert
-    h2 = "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
-    ul
-      - @task.errors.full_messages.each do |message|
-        li = message
+    - if @task.errors.any?
+      #error_explanation
+        ul
+          - @task.errors.full_messages.each do |message|
+            li = message
 
-= form_for @task, html: {class: "forma"} do |f|
   .field
     = f.label t('tasks.description')
     = f.text_field :description
