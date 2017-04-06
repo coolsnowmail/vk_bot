@@ -7,15 +7,15 @@ h4 =t('messages.Listing messages')
 
 ul.comments-box
   - @messages.each do |message|
-      li.comment-box
+      li.comment-box id="message_#{message.id}"
         .comment-description
           span = message.text
         .comment-maneger
           = link_to t('Edit'), edit_message_path(message)
-          = link_to t('Destroy'), message, data: { confirm: t('Are you sure') }, method: :delete
+          = link_to t('Destroy'), message, data: { confirm: t('Are you sure') }, method: :delete, remote: true
 
 br
 .links
   = link_to t('Create') , new_message_path
   '|
-  = link_to t('Back'), task_path(@current_user.task.id)
+  = link_to t('Back'), @current_user

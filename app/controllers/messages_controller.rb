@@ -43,6 +43,7 @@ class MessagesController < ApplicationController
     @message.destroy
     respond_to do |format|
       format.html { redirect_to messages_url, notice: t('messages.was successfully destroyed') }
+      format.js
     end
   end
 

@@ -28,6 +28,7 @@ ru:
     authorize pls: "Пройдите авторизацию"
     enter: "Войти"
   users:
+    task settings: "Настройка задачи"
     my group: "Моя группа"
     my task: "Моя задача"
     name: "Логин"

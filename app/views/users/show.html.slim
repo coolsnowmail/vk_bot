@@ -9,16 +9,8 @@ ul.user-ul
     .li-box
       = link_to t('Edit'), edit_user_group_path(@current_user.user_group.id), id: "edit_user_group_link", remote: true
     .li-box
-      = link_to t('Destroy'), @current_user.user_group, data: { confirm: t('Are you sure') }, method: :delete
   p.descript#ffff =t('users.my task')
   ==render 'user_task_sector'
-  / li.user_items#user_task_sector
-  /   .li-box.bot-descript
-  /     p = link_to @current_user.task.description, task_path(@current_user.task.id)
-  /   .li-box
-  /     = link_to t('Edit'), edit_task_path(@current_user.task.id), remote: true
-  /   .li-box
-  /     = link_to t('Destroy'), @current_user.task, data: { confirm: t('Are you sure') }, method: :delete
 
   div.descript =t('users.list of bots')
   = link_to t('Create'), new_bot_path, id: "new_bot_link", remote: true

@@ -3,6 +3,9 @@ class TasksController < ApplicationController
   skip_before_action :authorize_admin
 
   def show
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new

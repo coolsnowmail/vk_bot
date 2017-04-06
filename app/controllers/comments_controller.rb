@@ -43,6 +43,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to comments_url, notice: t('comments.was successfully destroyed') }
+      format.js
     end
   end
 

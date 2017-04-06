@@ -6,16 +6,12 @@ $(document).ready(function() {
       });
       }, 20000);
   };
-
-  if($("#backyyy").length > 0) {
-    alert('sdfsdfsdf');
-  }
 });
 
 $(document).bind('DOMSubtreeModified', function () {
   if ($("#backyyy").length) {
     $("#backyyy").click(function() {
-      $('.forma').remove();
+      $('#backyyy').next().remove();
       $('#user_group_sector').show();
       $('#backyyy').remove();
     });
@@ -23,7 +19,7 @@ $(document).bind('DOMSubtreeModified', function () {
 
   if($('#back').length) {
     $('#back').click(function() {
-      $('.forma').remove();
+      $('#back').next().remove();
       $('#new_bot_link').show();
       $('#back').remove();
     });
@@ -31,9 +27,18 @@ $(document).bind('DOMSubtreeModified', function () {
 
   if($('#task_back').length) {
     $('#task_back').click(function() {
-      $('.forma').remove();
+      $('#task_back').next().remove();
       $('#user_task_sector').show();
       $('#task_back').remove();
+    });
+  };
+
+  if($('#task_settings_back').length) {
+    $('#task_settings_back').click(function() {
+      $('#task_settings_back').next().next().remove();
+      $('#task_settings_back').next().remove();
+      $('#user_task_sector').show();
+      $('#task_settings_back').remove();
     });
   };
 });
