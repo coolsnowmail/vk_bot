@@ -127,3 +127,9 @@ ru:
           attributes:
             description:
               blank: "Вы не можете создать задачу без названия"
+        user_group:
+          attributes:
+            description:
+              blank: "Вы не можете оставить группу без названия"
+            url:
+              blank: "Вы не можете оставить группу id vk.com"

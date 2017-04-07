@@ -1,5 +1,5 @@
 if('<%= @bot.valid? %>' == "true") {
-  $('.forma').remove();
+  $('#back').next().remove();
   $('#back').remove();
   $('#new_bot_link').show();
   $('#boty').html( '<%= j render "users/bots_list" %>' );
@@ -8,7 +8,7 @@ if('<%= @bot.valid? %>' == "true") {
 };
 
 if('<%= @bot.valid?%>' == "false") {
-  $('.forma').remove();
+  $('#back').next().remove();
   $('#back').remove();
   $('#new_bot_link').hide().after('<%= j render("form") %>');
 };
