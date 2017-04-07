@@ -3,6 +3,8 @@ class AdminLoginController < ApplicationController
   skip_before_action :authorize_admin
 
   def new
+    redirect_to admin_path(session[:admin_id]) if session[:admin_id]
+    redirect_to user_url(session[:user_id]), notice: t('user notes') if session[:user_id]
   end
 
   def create

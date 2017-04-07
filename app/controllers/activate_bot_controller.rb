@@ -13,16 +13,6 @@ class ActivateBotController < ApplicationController
             "v" => "5.62"})
         bot_piar_groups = JSON.parse(response.body)
         if bot_piar_groups["response"]
-          # bot.status = 3
-          # respond_to do |format|
-          #   if bot.save
-          #     format.html { redirect_to groups_path, notice: t('groups.was successfully created') }
-          #   else
-          #     format.html { render :new }
-          #   end
-          # end
-
-
            if bot.update(status: 3)
              redirect_to user_path(@current_user), notice: t("bots.bot activated")
            else
