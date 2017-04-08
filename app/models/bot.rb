@@ -5,6 +5,8 @@ class Bot < ActiveRecord::Base
   validates :description, presence: true
   validates :description, uniqueness: true
   validates :access_token, uniqueness: true
+  validates :description, length: { maximum: 18 }
+  validates :access_token, length: { in: 20..180 }
 
 
   def offset_change
