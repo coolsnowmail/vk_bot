@@ -2,10 +2,12 @@
   p#notice = notice
 
 
-h4 =t('messages.Listing messages')
-
-
 ul.comments-box
+  -unless @current_user.task.message_group.present?
+    ==render 'group_messager/form'
+  -else
+    ==render 'group_messager/group_messager_show'
+
   - @messages.each do |message|
       li.comment-box id="message_#{message.id}"
         .comment-description

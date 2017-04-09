@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  resources :products
   get 'activate_bot/activate'
   get 'tasks/refresh_part'
 
+  post 'group_messager/key_word_create'
+  post 'group_messager/message_group_create'
+
+  resources :group_messager, only: [:new,:edit, :create,:update]
   resources :admins
   resources :bots
   resources :users
@@ -75,6 +80,5 @@ Rails.application.routes.draw do
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  #     #   end
 end

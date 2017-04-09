@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
   belongs_to :user
+  has_one :message_group, dependent: :destroy
   has_many :like_trakings, dependent: :destroy
   has_many :message_trakings, dependent: :destroy
   has_many :comment_trakings, dependent: :destroy

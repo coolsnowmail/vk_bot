@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314183623) do
+ActiveRecord::Schema.define(version: 20170409074443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 20170314183623) do
 
   add_index "groups", ["task_id"], name: "index_groups_on_task_id", using: :btree
 
+  create_table "key_words", force: :cascade do |t|
+    t.integer  "message_group_id"
+    t.string   "word"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "key_words", ["message_group_id"], name: "index_key_words_on_message_group_id", using: :btree
+
   create_table "like_trakings", force: :cascade do |t|
     t.string   "vk_user_id"
     t.integer  "offset"
@@ -78,6 +87,16 @@ ActiveRecord::Schema.define(version: 20170314183623) do
   end
 
   add_index "like_trakings", ["task_id"], name: "index_like_trakings_on_task_id", using: :btree
+
+  create_table "message_groups", force: :cascade do |t|
+    t.integer  "task_id"
+    t.string   "vk_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "message_groups", ["task_id"], name: "index_message_groups_on_task_id", using: :btree
 
   create_table "message_trakings", force: :cascade do |t|
     t.string   "vk_user_id"

@@ -1,0 +1,28 @@
+// MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+// var observer = new MutationObserver(function(mutations, observer) {
+//   if ($("#message_group_back").length) {
+//     $("#message_group_back").click(function() {
+//       alert('dfdffss');
+//       // $('#backyyy').next().remove();
+//       // $('#user_group_sector').show();
+//       // $('#backyyy').remove();
+//     });
+//   };
+
+
+// observer.observe(document, {
+//   subtree: true,
+//   attributes: true
+// });
+
+$(document).bind('DOMSubtreeModified', function () {
+  if ($("#message_group_back").length) {
+    $("#message_group_back").click(function() {
+      alert('dfdffss');
+      // $('#backyyy').next().remove();
+      // $('#user_group_sector').show();
+      // $('#backyyy').remove();
+    });
+  };
+});

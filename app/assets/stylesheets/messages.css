@@ -1,3 +1,27 @@
 .messages h4 {
   text-align: center;
 }
+
+.message_group_box {
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items:  center;
+}
+
+.name_message_group_box {
+  display: flex;
+}
+
+.vk_id_message_group_box {
+  display: flex;
+}
+
+.message_group_lable {
+  margin-right: 10px;
+}
+
+#group_message_edit {
+  margin: auto 0;
+}
