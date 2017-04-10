@@ -1,1 +1,12 @@
-alert('ssdfdsdfsd');
+if (<%= @message_group.valid? %> == false) {
+  $('#message_group_back').next().remove();
+  $('#message_group_back').remove();
+  $(".message_group_box").hide().after('<%= j render("form") %>');
+;};
+
+if (<%= @message_group.valid? %>) {
+  $('#message_group_back').next().remove();
+  $('#message_group_back').remove();
+  $(".message_group_box").remove();
+  $(".alert").after('<%= j render("group_messager/group_messager_show") %>');
+;};

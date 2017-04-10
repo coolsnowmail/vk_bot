@@ -2,10 +2,7 @@ Rails.application.routes.draw do
   resources :products
   get 'activate_bot/activate'
   get 'tasks/refresh_part'
-
-  post 'group_messager/key_word_create'
-  post 'group_messager/message_group_create'
-
+  resources :key_words, only: [:new,:edit, :create,:update, :destroy]
   resources :group_messager, only: [:new,:edit, :create,:update]
   resources :admins
   resources :bots

@@ -3,10 +3,14 @@
 
 
 ul.comments-box
-  -unless @current_user.task.message_group.present?
-    ==render 'group_messager/form'
-  -else
-    ==render 'group_messager/group_messager_show'
+  -if @current_user.task.message_group == nil
+    #message_group_create
+      span у вас нет группы, пользователям которой будут отправляться сообщения
+      =link_to t('Create'), new_group_messager_path, remote: true
+
+
+  -if @current_user.task.message_group.present?
+     ==render 'group_messager/edit_form'
 
   - @messages.each do |message|
       li.comment-box id="message_#{message.id}"
