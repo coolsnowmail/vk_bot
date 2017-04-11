@@ -12,10 +12,14 @@ class GroupMessagerController < ApplicationController
   def create
     @message_group = @current_user.task.build_message_group(message_group_params)
 
-    respond_to do |format|
-      @message_group.save
-      format.js
+    if @message_group.save
+      return render partial: 'success_save'
+    else
+      return render partial: 'fail_save'
     end
+    # respond_to do |format|
+    #   format.js
+    # end
   end
 
   def update

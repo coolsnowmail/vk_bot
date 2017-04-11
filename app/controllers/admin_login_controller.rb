@@ -9,7 +9,7 @@ class AdminLoginController < ApplicationController
 
   def create
     admin = Admin.find_by(name: params[:name])
-    if admin and admin.authenticate(params[:password])
+    if admin && admin.authenticate(params[:password])
       session[:admin_id] = admin.id
       redirect_to admin_path(session[:admin_id])
     else

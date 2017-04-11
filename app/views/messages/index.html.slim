@@ -12,6 +12,7 @@ ul.comments-box
   -if @current_user.task.message_group.present?
      ==render 'group_messager/edit_forma'
 
+  .messages_list_head =t('messages list')
   - @messages.each do |message|
       li.comment-box id="message_#{message.id}"
         .comment-description
