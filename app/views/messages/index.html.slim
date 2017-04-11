@@ -5,15 +5,13 @@
 ul.comments-box
   -if @current_user.task.message_group == nil
     #message_group_create
-      span у вас нет группы, пользователям которой будут отправляться сообщения
+      span =t('create message group')
       =link_to t('Create'), new_group_messager_path, remote: true
 
 
   -if @current_user.task.message_group.present?
-     ==render 'group_messager/edit_form'
+     ==render 'group_messager/edit_forma'
 
-     h4#key_word_header Список ключевых слов
-     ==render 'key_words/key_words_list'
   - @messages.each do |message|
       li.comment-box id="message_#{message.id}"
         .comment-description

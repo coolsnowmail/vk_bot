@@ -1,22 +1,23 @@
-.wraping#message_group_back_create <<<<<
+.wraping
+  #message_group_back_create <<<<<
 
 
-= form_for @message_group, url: {action: "create"}, html: {class: "forma"}, remote: true do |f|
+  = form_for @message_group, url: {action: "create"}, html: {class: "forma"}, remote: true do |f|
 
-  .alert
-  - if @message_group.errors.any?
-    #error_explanation
-      ul
-        - @message_group.errors.full_messages.each do |message|
-          li = message
+    .alert
+    - if @message_group.errors.any?
+      #error_explanation
+        ul
+          - @message_group.errors.full_messages.each do |message|
+            li = message
 
-  .field
-    = f.label t("name message group")
-    = f.text_field :name
+    .field
+      = f.label t("name message group")
+      = f.text_field :name
 
-  .field
-    = f.label t("name message group")
-    = f.text_field :vk_id
+    .field
+      = f.label t("name message group")
+      = f.text_field :vk_id
 
-  .action
-    = f.submit t('Create'), class: "button"
+    .action
+      = f.submit t('Create'), class: "button"

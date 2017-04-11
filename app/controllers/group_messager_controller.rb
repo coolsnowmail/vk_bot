@@ -2,21 +2,6 @@ class GroupMessagerController < ApplicationController
   skip_before_action :authorize_admin
   before_action :set_message_group, only: [:edit, :update]
 
-  # def key_word_create
-  #   #
-  # end
-
-
-  # def message_group_create
-  #   @message_group = @current_user.task.build_message_group(name: params[:name], vk_id: params[:vk_id])
-  #   @message_group.save
-  #   puts @message_group.errors.full_messages
-  #   respond_to do |format|
-  #     format.js
-  #   end
-  # end
-
-
   def new
     @message_group = MessageGroup.new
   end

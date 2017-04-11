@@ -1,4 +1,5 @@
-.wraping#key_word_back <<<<<
+.back_conteiner
+  #key_word_back <<<<<
 
 = form_for @key_word, html: {class: "forma"}, remote: true do |f|
   - if @key_word.errors.any?
@@ -10,4 +11,4 @@
   .field
     = f.label :word
     = f.text_field :word
-  .actions = f.submit
+  .actions = f.submit t('save_button'), class: "button"

@@ -4,7 +4,7 @@ var observer = new MutationObserver(function(mutations, observer) {
   if ($("#message_group_back").length) {
     $("#message_group_back").click(function() {
       $('.message_group_box').show();
-      $(".forma").remove()
+      $("#message_group_forma").remove()
       $("#message_group_back").remove()
     });
   };
@@ -12,14 +12,14 @@ var observer = new MutationObserver(function(mutations, observer) {
   if ($('#message_group_back_create').length) {
     $('#message_group_back_create').click(function() {
       $('#message_group_create').show();
-      $('.forma').remove();
+      $('#new_message_group').remove();
       $('#message_group_back_create').remove();
     });
   };
 
   if ($('#key_word_back').length) {
     $('#key_word_back').click(function() {
-      $('.forma').remove();
+      $('#new_key_word').remove();
       $('#key_word_back').remove();
       $('#key_word_sector').show();
     });

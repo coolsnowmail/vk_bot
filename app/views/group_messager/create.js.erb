@@ -1,12 +1,10 @@
 if (<%= @message_group.persisted? %> == false) {
-  $('.forma').remove();
-  $('#message_group_back_create').remove();
+  $('#message_group_back_create').parent().remove();
   $("#message_group_create").hide().after('<%= j render("create_form") %>');
 };
 
 if (<%= @message_group.persisted? %>) {
-  $('.forma').remove();
-  $('#message_group_back_create').remove();
-  $('#message_group_create').remove();
-  $('.comments-box').prepend('<%= j render("group_messager/edit_form") %>');
+  $('#message_group_back_create').parent().remove();
+  $("#message_group_create").remove();
+  $(".comments-box").prepend('<%= j render("edit_forma") %>');
 };
