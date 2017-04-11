@@ -25,3 +25,32 @@
 #group_message_edit {
   margin: auto 0;
 }
+
+#key_word_sector {
+  width: 800px;
+  margin: 20px auto;
+}
+
+#key_word_sector ul li {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.key_word {
+  display: flex;
+  align-content: stretch;
+}
+
+.word_name {
+  flex-grow: 4;
+}
+
+.word_delete {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-weight: 800;
+}
+
+#create_key_word_link {
+  margin-bottom: 30px;
+}

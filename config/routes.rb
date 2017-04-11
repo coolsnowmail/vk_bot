@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :products
   get 'activate_bot/activate'
   get 'tasks/refresh_part'
-  resources :key_words, only: [:new,:edit, :create,:update, :destroy]
+  resources :key_words, only: [:new, :create, :destroy]
   resources :group_messager, only: [:new,:edit, :create,:update]
   resources :admins
   resources :bots

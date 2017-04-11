@@ -16,12 +16,34 @@ var observer = new MutationObserver(function(mutations, observer) {
       $('#message_group_back_create').remove();
     });
   };
+
+  if ($('#key_word_back').length) {
+    $('#key_word_back').click(function() {
+      $('.forma').remove();
+      $('#key_word_back').remove();
+      $('#key_word_sector').show();
+    });
+  };
+
+  $('.key_word').hover(function(){
+    $(this).css("background-color", "#DCC6E0");
+    }, function(){
+    $(this).css("background-color", "#ffffff");
+  });
 });
 
 
 observer.observe(document, {
   subtree: true,
   attributes: true
+});
+
+$(document).ready(function() {
+  $('.key_word').hover(function(){
+    $(this).css("background-color", "#DCC6E0");
+    }, function(){
+    $(this).css("background-color", "#ffffff");
+  });
 });
 
 

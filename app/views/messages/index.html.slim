@@ -12,6 +12,8 @@ ul.comments-box
   -if @current_user.task.message_group.present?
      ==render 'group_messager/edit_form'
 
+     h4#key_word_header Список ключевых слов
+     ==render 'key_words/key_words_list'
   - @messages.each do |message|
       li.comment-box id="message_#{message.id}"
         .comment-description

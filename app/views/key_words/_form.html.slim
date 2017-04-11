@@ -1,7 +1,8 @@
-= form_for @key_word do |f|
+.wraping#key_word_back <<<<<
+
+= form_for @key_word, html: {class: "forma"}, remote: true do |f|
   - if @key_word.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@key_word.errors.count, "error")} prohibited this key_word from being saved:"
       ul
         - @key_word.errors.full_messages.each do |message|
           li = message
