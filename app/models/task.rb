@@ -9,7 +9,7 @@ class Task < ActiveRecord::Base
   has_many :groups, dependent: :destroy
   has_many :bots, dependent: :destroy
   validates :description, presence: true
-  validates :url, length: { maximum: 30 }
+  validates :description, length: { maximum: 30 }
 
   def any_active_bot?
     if bots.any?

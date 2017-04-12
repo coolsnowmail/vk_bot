@@ -48,6 +48,7 @@ end
 
 gem 'spring'
 gem 'factory_girl_rails'
-gem "figaro"
+gem 'figaro'
 gem 'slim-rails'
+gem 'rubocop', require: false
 

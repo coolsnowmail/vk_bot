@@ -1,11 +1,11 @@
-class Msg15 < ActiveRecord::Base
+class Msg < ActiveRecord::Base
   def self.make(bot_id)
 coun = 0
     bot = Bot.find_by(id: bot_id)
     if bot
       if bot.check_message_limit < 20
         uri = URI.parse("https://api.vk.com/method/groups.getMembers")
-        response = Net::HTTP.post_form(uri, {"group_id" => "molodost_bz",
+        response = Net::HTTP.post_form(uri, {"group_id" => bot.task.message_group.vk_id,
                 "sort" => "id_desc",
                 "offset" => bot.task.message_offset,
                 "count" => 1000,
@@ -16,8 +16,8 @@ coun = 0
   puts vk_user_ids["response"]["items"].size
         bot.if_members_for_messsage_send_over(vk_user_ids["response"]["count"])
         sleep rand(1..2)
-        maked_messages = bot.check_if_message_have_maked
 
+        maked_messages = bot.check_if_message_have_maked
         if vk_user_ids["response"]["count"] > bot.task.message_offset
           vk_user_ids["response"]["items"].each do |vk_user_id|
             unless maked_messages.include?(vk_user_id.to_s)
@@ -34,17 +34,20 @@ coun = 0
               if response["response"]
                 response["response"]["items"].each do |group|
                   vk_user_groups.push(group["name"])
+
                 end
               end
               bot.task.update(message_offset: bot.task.message_offset + 1)
               group_counter = 0
               if vk_user_groups.size > 15
                 vk_user_groups.each do |group_name|
-                  group_counter +=1 if group_name.include? "изнес" || "стартап" || "успех" || "продвижение" || "миллионер" || "миллиардер"
+                  group_counter +=1 if bot.task.message_group.get_key_words.any? {|word| group_name.include?(word)}
+                  # group_name.include? "изнес" || "стартап" || "успех" || "продвижение" || "миллионер" || "миллиардер"
                 end
               end
   puts coun += 1
               if group_counter >= 5
+
                 uri = URI.parse("https://api.vk.com/method/users.get")
                 user_info = Net::HTTP.post_form(uri, {"user_id" => vk_user_id,
                 "fields" => "counters",
