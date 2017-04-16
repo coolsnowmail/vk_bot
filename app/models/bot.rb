@@ -60,4 +60,8 @@ class Bot < ActiveRecord::Base
       task.update(message_offset: 0)
     end
   end
+
+  def disactive_bot
+    update(status: 1)
+  end
 end
