@@ -8,14 +8,14 @@ class User < ActiveRecord::Base
   validates :name, length: { maximum: 30 }
 
   def like_count
-    task.like_trakings.size
+    task.like_trakings.count
   end
 
   def comment_count
-    task.comment_trakings.size
+    task.comment_trakings.count
   end
 
   def message_count
-    task.message_trakings.size
+    task.message_trakings.count
   end
 end
