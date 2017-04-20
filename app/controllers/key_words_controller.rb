@@ -6,8 +6,6 @@ class KeyWordsController < ApplicationController
     @key_word = KeyWord.new
   end
 
-  # def edit
-  # end
 
   def create
     @key_word = @current_user.task.message_group.key_words.build(key_word_params)
@@ -17,18 +15,6 @@ class KeyWordsController < ApplicationController
       format.js
     end
   end
-
-  # def update
-  #   respond_to do |format|
-  #     if @key_word.update(key_word_params)
-  #       format.html { redirect_to @key_word, notice: 'Key word was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @key_word }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @key_word.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
   def destroy
     @key_word.destroy

@@ -17,9 +17,6 @@ class GroupMessagerController < ApplicationController
     else
       return render partial: 'fail_save'
     end
-    # respond_to do |format|
-    #   format.js
-    # end
   end
 
   def update
