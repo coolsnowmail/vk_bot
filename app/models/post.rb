@@ -42,52 +42,63 @@ class Post < ActiveRecord::Base
             if user_post["response"]["items"].first["copy_history"]
               user_post_id = user_post["response"]["items"].first["copy_history"].first["id"]
               unless user_post_id == group_post_id
-                uri = URI.parse("https://api.vk.com/method/wall.repost")
+                uri = URI.parse('https://api.vk.com/method/wall.repost')
                 response = Net::HTTP.post_form(uri, {
-                  "object" => "wall-#{bot.task.user.user_group.url}_#{group_post_id}",
-                  "access_token" => bot.access_token,
-                  "v" => "5.62"})
+                  'object' => 'wall-#{bot.task.user.user_group.url}_#{group_post_id}',
+                  'access_token' => bot.access_token,
+                  'v' => '5.62'})
                 sleep 1
                 response = JSON.parse(response.body)
-                if response["error"]
-                  uri = URI.parse("https://api.vk.com/method/messages.send")
-                  response = Net::HTTP.post_form(uri, {"user_id" => bot.task.user.vk_id,
-                    "message" => "бот № #{bot.id} юзера #{bot.task.user.name} не постит записи из группы на стену бота пользователя #{response["error"]}",
-                    "access_token" => bot.access_token,
-                    "v" => "5.62"})
+                if response['error']
+                  uri = URI.parse('https://api.vk.com/method/messages.send')
+                  response = Net::HTTP.post_form(uri, {'user_id' => bot.task.user.vk_id,
+                    'message' => 'бот № #{bot.id} юзера #{bot.task.user.name} не постит записи из группы на стену бота пользователя #{response["error"]}',
+                    'access_token' => bot.access_token,
+                    'v' => '5.62'})
                 end
               end
             else
-              uri = URI.parse("https://api.vk.com/method/wall.repost")
-              response = Net::HTTP.post_form(uri, {
-                "object" => "wall-#{bot.task.user.user_group.url}_#{group_post_id}",
-                "access_token" => bot.access_token,
-                "v" => "5.62"})
-              if response["error"]
-                uri = URI.parse("https://api.vk.com/method/messages.send")
-                response = Net::HTTP.post_form(uri, {"user_id" => bot.task.user.vk_id,
-                  "message" => "бот № #{bot.id} юзера #{bot.task.user.name} не постит записи из группы на стену бота пользователя #{response["error"]}",
-                  "access_token" => bot.access_token,
-                  "v" => "5.62"})
+              uri = URI.parse('https://api.vk.com/method/wall.repost')
+              response = Net::HTTP.post_form(
+                uri,
+                'object' => 'wall-#{bot.task.user.user_group.url}_#{group_post_id}',
+                'access_token' => bot.access_token,
+                'v' => '5.62'
+              )
+              if response['error']
+                uri = URI.parse('https://api.vk.com/method/messages.send')
+                Net::HTTP.post_form(
+                  uri,
+                  'user_id' => bot.task.user.vk_id,
+                  'message' => 'бот № #{bot.id} юзера #{bot.task.user.name} не постит записи из группы на стену бота пользователя #{response["error"]}',
+                  'access_token' => bot.access_token,
+                  'v' => '5.62'
+                )
               end
             end
           end
         end
-        if user_post["error"]
-          uri = URI.parse("https://api.vk.com/method/messages.send")
-          response = Net::HTTP.post_form(uri, {"user_id" => bot.task.user.vk_id,
-            "message" => "бот № #{bot.id} юзера #{bot.task.user.name} не получает посты со стены бота пользователя #{response["error"]}",
-            "access_token" => bot.access_token,
-            "v" => "5.62"})
+        if user_post['error']
+          uri = URI.parse('https://api.vk.com/method/messages.send')
+          Net::HTTP.post_form(
+            uri,
+            'user_id' => bot.task.user.vk_id,
+            'message' => 'бот № #{bot.id} юзера #{bot.task.user.name} не получает посты со стены бота пользователя #{response["error"]}',
+            'access_token' => bot.access_token,
+            'v' => '5.62'
+          )
         end
       end
-      if group_post["error"]
-        uri = URI.parse("https://api.vk.com/method/messages.send")
-        response = Net::HTTP.post_form(uri, {"user_id" => bot.task.user.vk_id,
-          "message" => "бот № #{bot.id} юзера #{bot.task.user.name} не получает посты со стены группы пользователя #{response["error"]}",
-          "access_token" => bot.access_token,
-          "v" => "5.62"})
-       end
+      if group_post['error']
+        uri = URI.parse('https://api.vk.com/method/messages.send')
+        Net::HTTP.post_form(
+          uri,
+          'user_id' => bot.task.user.vk_id,
+          'message' => 'бот № #{bot.id} юзера #{bot.task.user.name} не получает посты со стены группы пользователя #{response["error"]}',
+          'access_token' => bot.access_token,
+          'v' => '5.62'
+        )
+      end
     end
   end
 end
