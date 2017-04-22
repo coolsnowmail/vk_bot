@@ -12,11 +12,11 @@ RSpec.describe ActivateBotController, :type => :controller do
       expect(response).to redirect_to(user_path(user.id))
     end
 
-  #   it 'should check containtion of @carts of index action' do
-  #     session[:user_id] = user.id
-  #     get :index
-  #     expect(assigns(:carts)).to eq(Cart.all)
-  #   end
+    it 'should check containtion of @carts of index action' do
+      session[:user_id] = user.id
+      get :index
+      expect(assigns(:carts)).to eq(Cart.all)
+    end
   end
 
   # context 'for show' do
