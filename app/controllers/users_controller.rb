@@ -8,11 +8,6 @@ class UsersController < ApplicationController
   skip_before_action :authorize_admin, only: [:show]
   skip_before_action :authorize_user, only: [:new, :create, :edit, :update, :destroy, :index]
 
-
-  def index
-    @users = User.all
-  end
-
   def show
   end
 
@@ -28,7 +23,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @current_admin, notice: 'User was successfully created.' }
+        format.html { redirect_to @current_admin, notice: t('users.User was successfully created') }
       else
         format.html { render :new }
       end
@@ -38,7 +33,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @current_admin, notice: 'User was successfully updated.' }
+        format.html { redirect_to @current_admin, notice: t('users.User was successfully updated') }
       else
         format.html { render :edit }
       end
@@ -48,7 +43,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to @current_admin, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to @current_admin, notice: t('users.User was successfully destroyed') }
     end
   end
 

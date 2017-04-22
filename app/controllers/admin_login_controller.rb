@@ -13,12 +13,12 @@ class AdminLoginController < ApplicationController
       session[:admin_id] = admin.id
       redirect_to admin_path(session[:admin_id])
     else
-      redirect_to admin_login_url, alert: "Неверная комбинация имени и пароля"
+      redirect_to admin_login_url, alert: t('wrong login or password')
     end
   end
 
   def destroy
     session[:admin_id] = nil
-    redirect_to login_url, alert: "Выход выполнен"
+    redirect_to login_url, alert: t('exit done')
   end
 end

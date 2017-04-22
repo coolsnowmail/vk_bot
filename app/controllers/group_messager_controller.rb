@@ -31,7 +31,6 @@ class GroupMessagerController < ApplicationController
       @message_group = MessageGroup.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def message_group_params
       params.require(:message_group).permit(:name, :vk_id)
     end

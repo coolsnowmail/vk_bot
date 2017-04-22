@@ -3,9 +3,7 @@ class TasksController < ApplicationController
   skip_before_action :authorize_admin
 
   def show
-    respond_to do |format|
-      format.js
-    end
+    return render partial: 'showy'
   end
 
   def new
@@ -38,17 +36,8 @@ class TasksController < ApplicationController
     end
   end
 
-  def destroy
-    @task.destroy
-    respond_to do |format|
-      format.html { redirect_to user_url(@current_user.id), notice: t('tasks.successfully destroyed') }
-    end
-  end
-
   def refresh_part
-    respond_to do |format|
-      format.js
-    end
+    return render partial: 'tasks/refresh_part'
   end
 
   private

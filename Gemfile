@@ -52,3 +52,4 @@ gem 'figaro'
 gem 'slim-rails'
 gem 'rubocop', require: false
 
+

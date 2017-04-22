@@ -13,12 +13,12 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(session[:user_id])
     else
-      redirect_to login_url, alert: "Неверная комбинация имени и пароля"
+      redirect_to login_url, alert: t('wrong login or password')
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to login_url, alert: "Выход выполнен"
+    redirect_to login_url, alert: t('exit done')
   end
 end

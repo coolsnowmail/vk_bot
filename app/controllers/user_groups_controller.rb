@@ -2,9 +2,6 @@ class UserGroupsController < ApplicationController
   before_action :set_user_group, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorize_admin
 
-  def show
-  end
-
   def new
     @user_group = UserGroup.new
   end
@@ -32,13 +29,6 @@ class UserGroupsController < ApplicationController
       else
         format.js
       end
-    end
-  end
-
-  def destroy
-    @user_group.destroy
-    respond_to do |format|
-      format.html { redirect_to user_url(@current_user.id), notice: t('user_groups.successfully destroyed') }
     end
   end
 

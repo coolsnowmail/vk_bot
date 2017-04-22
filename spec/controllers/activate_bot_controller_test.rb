@@ -5,77 +5,61 @@ RSpec.describe ActivateBotController, :type => :controller do
 
   let!(:bot) { create(:bot) }
   let!(:user) { create(:user) }
+  let!(:task) { create(:task) }
+  let!(:message_group) { create(:message_group) }
+  let!(:key_word) { create(:key_word) }
   context 'for activate' do
-    it 'should render index template' do
+    it 'should redirect to curent_user if bot id not found' do
       session[:user_id] = user.id
       get :activate
       expect(response).to redirect_to(user_path(user.id))
+      expect(flash[:notice]).to eq(I18n.t("bots.params error"))
     end
 
-    it 'should check containtion of @carts of index action' do
+    it 'should redirect to curent_user if message group not found' do
       session[:user_id] = user.id
-      get :index
-      expect(assigns(:carts)).to eq(Cart.all)
+      task.bots << bot
+      get :activate, bot_id: bot.id
+      expect(response).to redirect_to(user_path(user.id))
+      expect(flash[:notice]).to eq(I18n.t('enter group for messages'))
+    end
+
+    it 'should redirect to curent_user if any key word not found' do
+      session[:user_id] = user.id
+      task.bots << bot
+      task.message_group = message_group
+      get :activate, bot_id: bot.id
+      expect(response).to redirect_to(user_path(user.id))
+      expect(flash[:notice]).to eq(I18n.t('enter key words'))
     end
   end
 
-  # context 'for show' do
-  #   it 'should render show template' do
-  #     session[:user_id] = user.id
-  #     get :show, id: cart1.id
-  #     expect(response).to render_template(:show)
-  #   end
+  context 'should do request' do
+    it 'should get error' do
+      session[:user_id] = user.id
+      task.bots << bot
+      task.message_group = message_group
+      message_group.key_words << key_word
+      get :activate, bot_id: bot.id
+      expect(response).to redirect_to(user_path(user.id))
+      expect(flash[:notice]).to eq(I18n.t("bots.access token error"))
+    end
 
-  #   it 'should check containtion of @cart of show action' do
-  #     session[:user_id] = user.id
-  #     get :show, id: cart1.id
-  #     expect(assigns(:cart)).to eq(cart1)
-  #   end
-
-  #   it 'should call invalid_cart method' do
-  #     session[:user_id] = user.id
-  #     get :show, id: 0
-  #     expect(response).to redirect_to store_url
-  #     expect(flash[:notice]).to eq("Invalid cart")
-  #   end
-  # end
-
-  # context 'for new' do
-  #   it 'should render new template' do
-  #     session[:user_id] = user.id
-  #     get :new
-  #     expect(response).to render_template(:new)
-  #   end
-
-  #   it 'should check containtion of @cart of new action' do
-  #     session[:user_id] = user.id
-  #     get :new
-  #     expect(assigns(:cart)).to be_a_new(Cart)
-  #   end
-  # end
-
-  # context 'for edit' do
-  #   it 'should render edit template' do
-  #     session[:user_id] = user.id
-  #     get :edit, id: cart1.id
-  #     expect(response).to render_template(:edit)
-  #   end
-  # end
-
-  # context 'for create' do
-  #   it 'check if save a new cart and redirect to store_url' do
-  #     post :create
-  #     expect(Cart.all.size).to eq(3)
-  #     expect(response).to redirect_to(store_url)
-  #   end
-  # end
-
-  # context 'for destroy' do
-  #   it 'check if destroy cart and redirect to store_url' do
-  #     session[:cart_id] = cart1.id
-  #     expect{ delete :destroy, id: cart1.id }.to change(Cart, :count).by(-1)
-  #     expect(response).to redirect_to(store_url)
-  #     expect(session[:user_id].present?).to eq(false)
-  #   end
-  # end
+    # it 'should get success response from vk' do
+    #   session[:user_id] = user.id
+    #   task.bots << bot
+    #   task.message_group = message_group
+    #   message_group.key_words << key_word
+    #   dbl = ActivateBotController.stub(:check_token) { 'this is the value to return' }
+    #   get :activate, bot_id: bot.id
+      # parsed_response = JSON.parse(response.body)
+      # parsed_response = JSON.parse(response.body)
+      # expect(parsed_response['error']).to eq("Student does not exist")
+      # dbl = double("Some Collaborator")
+      # expect(dbl).to receive(:foo)
+      # expect(assigns(:bot_piar_groups)).to eq(0)
+      # expect(response).to redirect_to(user_path(user.id))
+      # expect(flash[:notice]).to eq(I18n.t("bots.access token error"))
+    # end
+  end
 end

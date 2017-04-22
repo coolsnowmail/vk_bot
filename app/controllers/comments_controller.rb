@@ -7,9 +7,6 @@ class CommentsController < ApplicationController
     flash[:notice] = t('comments.create a new comment') unless @comments.any?
   end
 
-  def show
-  end
-
   def new
     @comment = Comment.new
   end

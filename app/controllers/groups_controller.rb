@@ -7,9 +7,6 @@ class GroupsController < ApplicationController
     flash[:notice] = t('groups.create a new group') unless @groups.any?
   end
 
-  def show
-  end
-
   def new
     @group = Group.new
   end

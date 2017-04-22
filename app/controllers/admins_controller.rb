@@ -12,10 +12,8 @@ class AdminsController < ApplicationController
     respond_to do |format|
       if @admin.update(admin_params)
         format.html { redirect_to @admin, notice: 'Admin was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin }
       else
         format.html { render :edit }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
       end
     end
   end

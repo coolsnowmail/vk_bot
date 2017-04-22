@@ -3,17 +3,17 @@ require "rails_helper"
 RSpec.describe BotsController, type: :routing do
   describe "routing" do
 
-    it "routes to #index" do
-      expect(:get => "/bots").to route_to("bots#index")
-    end
+    # it "routes to #index" do
+    #   expect(:get => "/bots").to route_to("bots#index")
+    # end
 
     it "routes to #new" do
       expect(:get => "/bots/new").to route_to("bots#new")
     end
 
-    it "routes to #show" do
-      expect(:get => "/bots/1").to route_to("bots#show", :id => "1")
-    end
+    # it "routes to #show" do
+    #   expect(:get => "/bots/1").to route_to("bots#show", :id => "1")
+    # end
 
     it "routes to #edit" do
       expect(:get => "/bots/1/edit").to route_to("bots#edit", :id => "1")

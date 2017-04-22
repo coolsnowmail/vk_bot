@@ -1,4 +1,6 @@
 ru:
+  exit done: "Выход выполнен"
+  wrong login or password: "Неверная комбинация имени и пароля"
   messages list: "Cписок сообщений"
   id vk group: "id vk.com группы: "
   sent vk group: "Группа для отсылки сообщений: "
@@ -39,6 +41,9 @@ ru:
     authorize pls: "Пройдите авторизацию"
     enter: "Войти"
   users:
+    User was successfully updated: 'Пользователь обновлен'
+    User was successfully destroyed: 'Пользователь удален'
+    User was successfully created: 'Пользователь создан'
     task settings: "Настройка задачи"
     my group: "Моя группа"
     my task: "Моя задача"

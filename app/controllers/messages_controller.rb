@@ -7,9 +7,6 @@ class MessagesController < ApplicationController
     flash[:notice] = t('messages.create a new message') unless @messages.any?
   end
 
-  def show
-  end
-
   def new
     @message = Message.new
   end

@@ -23,9 +23,5 @@ RSpec.describe UserGroupsController, type: :routing do
       expect(:patch => "/user_groups/1").to route_to("user_groups#update", :id => "1")
     end
 
-    it "routes to #destroy" do
-      expect(:delete => "/user_groups/1").to route_to("user_groups#destroy", :id => "1")
-    end
-
   end
 end
