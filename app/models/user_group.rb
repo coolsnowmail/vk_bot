@@ -1,3 +1,4 @@
+# vk user's group
 class UserGroup < ActiveRecord::Base
   belongs_to :user
   validates :description, presence: true
