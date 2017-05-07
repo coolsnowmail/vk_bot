@@ -35,7 +35,7 @@ class Msg < ActiveRecord::Base
           group_counter = 0
           if vk_user_groups.size > 15
             vk_user_groups.each do |group_name|
-              group_counter +=1 if bot.task.message_group.get_key_words.any? {|word| group_name.include?(word)}
+              group_counter +=1 if bot.task.message_group.take_key_words.any? {|word| group_name.include?(word)}
             end
           end
 # puts

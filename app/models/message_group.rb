@@ -1,3 +1,4 @@
+# get key words
 class MessageGroup < ActiveRecord::Base
   belongs_to :task
   has_many :key_words, dependent: :destroy
@@ -6,9 +7,9 @@ class MessageGroup < ActiveRecord::Base
   validates :vk_id, length: { maximum: 30 }
   validates :name, length: { maximum: 50 }
 
-  def get_key_words
+  def take_key_words
     words = []
-    key_words.each {|key_word| words.push(key_word.word)}
-    return words
+    key_words.each { |key_word| words.push(key_word.word) }
+    words
   end
 end
