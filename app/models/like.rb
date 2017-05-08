@@ -14,7 +14,8 @@ class Like < ActiveRecord::Base
         )
         bot.disactive_bot
       else
-        group_id = bot.task.groups.first.url.split('/')[3]
+        group_id = bot.task.groups.first.url
+        # group_id = bot.task.groups.first.url.split('/')[3]
         uri = URI.parse('https://api.vk.com/method/groups.getMembers')
         response = Net::HTTP.post_form(
           uri,
@@ -26,6 +27,7 @@ class Like < ActiveRecord::Base
           'v' => '5.62'
         )
         vk_user_ids = JSON.parse(response.body)
+        # bot.disactive_bot if vk_user_ids['error']
         bot.if_members_over(vk_user_ids['response']['count'])
 # puts vk_user_ids
         sleep rand(1..3)
