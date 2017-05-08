@@ -1,3 +1,4 @@
+# task for bot
 class Task < ActiveRecord::Base
   belongs_to :user
   has_one :message_group, dependent: :destroy
