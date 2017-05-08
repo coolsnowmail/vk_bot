@@ -14,9 +14,9 @@ RSpec.describe MessageGroup, :type => :model do
   let!(:message_group) { create(:message_group) }
   let!(:key_word1) { create(:key_word) }
   let!(:key_word2) { create(:key_word) }
-  it 'should delete admin' do
+  it 'should get key words' do
     message_group.key_words << key_word1
     message_group.key_words << key_word2
-    expect(message_group.get_key_words).to eq(["word", "word"])
+    expect(message_group.take_key_words).to eq(["word", "word"])
   end
 end
