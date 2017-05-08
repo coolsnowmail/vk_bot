@@ -1,4 +1,12 @@
-li.user_items = t('users.proccessing group') + @current_user.task.groups.first.url.to_s
-li.user_items = t('users.like count') + @current_user.like_count.to_s
-li.user_items = t('users.message count') + @current_user.message_count.to_s
-li.user_items = t('users.comment count') + @current_user.comment_count.to_s
+li.user_items
+  = t('users.proccessing group')
+  = link_to "https://vk.com/club#{@current_user.task.groups.first.url.to_s}", "https://vk.com/club#{@current_user.task.groups.first.url.to_s}", target: :blank
+li.user_items
+  = t('users.like count')
+  div = @current_user.like_count
+li.user_items
+  = t('users.message count')
+  div = @current_user.message_count
+li.user_items
+  = t('users.comment count')
+  div = @current_user.comment_count

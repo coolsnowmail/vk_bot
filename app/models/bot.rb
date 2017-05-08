@@ -7,7 +7,7 @@ class Bot < ActiveRecord::Base
   validates :description, uniqueness: true
   validates :access_token, uniqueness: true
   validates :description, length: { maximum: 18 }
-  validates :access_token, length: { in: 20..180 }
+  validates :access_token, length: { maximum: 180 }
 
   def offset_change
     last_like_traking = task.like_trakings.order(created_at: :desc).first
