@@ -9,7 +9,6 @@ class KeyWordsController < ApplicationController
 
   def create
     @key_word = @current_user.task.message_group.key_words.build(key_word_params)
-
     respond_to do |format|
       @key_word.save
       format.js

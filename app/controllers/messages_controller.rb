@@ -11,8 +11,7 @@ class MessagesController < ApplicationController
     @message = Message.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @message = @current_user.task.messages.build(message_params)
@@ -45,6 +44,7 @@ class MessagesController < ApplicationController
   end
 
   private
+
     def set_message
       @message = Message.find(params[:id])
     end
