@@ -57,8 +57,10 @@ ul.user-ul li {
 
 .task-info {
   background: #F1A9A0;
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 5px;
+  font-size: 23px;
+  font-weight: 800;
 }
 
 .bot-descript {
@@ -67,4 +69,8 @@ ul.user-ul li {
 
 .user_items.user_line {
   margin-top: 20px;
+}
+
+.task_info_items {
+  padding-top: 20px;
 }

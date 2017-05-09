@@ -5,26 +5,28 @@ class ActivateBotController < ApplicationController
     return redirect_to user_path(@current_user), notice: t("bots.params error") unless bot
     return redirect_to user_path(@current_user), notice: t('enter group for messages') unless bot.task.message_group
     return redirect_to user_path(@current_user), notice: t('enter key words') unless bot.task.message_group.key_words.any?
-    bot_piar_groups = check_token(bot)
-    return redirect_to user_path(@current_user), notice: t("bots.access token error") unless bot_piar_groups["response"]
-    if bot_piar_groups["response"]
-       if bot.update(status: 3)
-         redirect_to user_path(@current_user), notice: t("bots.bot activated")
-       else
-         redirect_to user_path(@current_user), notice: t("bots.activate error")
-       end
+    vk_id = check_token(bot)
+    return redirect_to user_path(@current_user), notice: t("bots.access token error") unless vk_id["response"]
+    if vk_id["response"]
+      bot_vk_id = vk_id["response"].first["id"]
+      bot_vk_ids = []
+      Bot.all.each {|i| bot_vk_ids.push(i.vk_id)}
+      unless bot_vk_ids.include? bot_vk_id
+        bot.update(status: 3, vk_id: bot_vk_id)
+        redirect_to user_path(@current_user), notice: t("bots.bot activated")
+      else
+        redirect_to user_path(@current_user), notice: t("bots.activate error")
+      end
     end
   end
 
   private
     def check_token(bot)
-      uri = URI.parse("https://api.vk.com/method/groups.get")
+      uri = URI.parse("https://api.vk.com/method/users.get")
       response = Net::HTTP.post_form(uri, {
-        "offset" => 0,
-        "extended" => 1,
-        "count" => 1000,
         "access_token" => bot.access_token,
         "v" => "5.62"})
-       bot_piar_groups = JSON.parse(response.body)
+       bot_vk_id = JSON.parse(response.body)
+       return bot_vk_id
     end
 end

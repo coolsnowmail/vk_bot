@@ -83,7 +83,7 @@ ru:
     login_vk: "Логин бота ВКОНТАКТЕ"
     access_token: "access_token"
     description: "Имя бота"
-    activate error: "Ошибка активации бота"
+    activate error: "Данный бот уже зарегистрированн в системе"
     bot activated: "Бот активирован"
     access token error: "Неверный access token. Пожалуйста, исправте access token бота ВКОНТАКТЕ"
     params error: "Неправильный ID бота"
@@ -135,6 +135,7 @@ ru:
               blank: "Бот не может быть без имени"
             access_token:
               taken: "У Вас уже есть бот с таким access token"
+              too_short: "Слишком короткий access_token"
         comment:
           attributes:
             text:
