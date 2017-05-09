@@ -86,5 +86,4 @@ class UsersController < ApplicationController
         redirect_to new_group_url, notice: t('tasks.enter your group')
       end
     end
-
 end

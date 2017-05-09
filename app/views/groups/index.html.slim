@@ -1,7 +1,6 @@
 .alert
   p#notice = notice
 
-
 h4 = t('groups.Listing groups')
 
 ul.comments-box
@@ -12,7 +11,6 @@ ul.comments-box
       .comment-maneger
         = link_to t('Edit'), edit_group_path(group)
         = link_to t('Destroy'), group, data: { confirm: t('Are you sure') }, method: :delete, remote: true
-
 
 .links
   = link_to t('Create') , new_group_path

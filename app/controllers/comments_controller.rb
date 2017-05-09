@@ -16,7 +16,6 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @current_user.task.comments.build(comment_params)
-
     respond_to do |format|
       if @comment.save
         format.html { redirect_to comments_path, notice: t('comments.was successfully created') }

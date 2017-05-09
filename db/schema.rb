@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170410180811) do
   add_index "bots", ["task_id"], name: "index_bots_on_task_id", using: :btree
 
   create_table "comment_trakings", force: :cascade do |t|
+    t.integer  "bot_id"
     t.integer  "comment_id"
     t.integer  "bot_id"
     t.integer  "task_id"
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(version: 20170410180811) do
   add_index "key_words", ["message_group_id"], name: "index_key_words_on_message_group_id", using: :btree
 
   create_table "like_trakings", force: :cascade do |t|
+    t.integer  "bot_id"
     t.string   "vk_user_id"
     t.integer  "offset"
     t.string   "vk_group_id"
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(version: 20170410180811) do
   add_index "message_groups", ["task_id"], name: "index_message_groups_on_task_id", using: :btree
 
   create_table "message_trakings", force: :cascade do |t|
+    t.integer  "bot_id"
     t.string   "vk_user_id"
     t.integer  "message_id"
     t.integer  "bot_id"

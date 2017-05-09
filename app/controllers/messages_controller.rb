@@ -44,7 +44,6 @@ class MessagesController < ApplicationController
   end
 
   private
-
     def set_message
       @message = Message.find(params[:id])
     end

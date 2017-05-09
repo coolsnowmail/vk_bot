@@ -1,13 +1,11 @@
 .alert
   p#notice = notice
 
-
 ul.comments-box
   -if @current_user.task.message_group == nil
     #message_group_create
       span =t('create message group')
       =link_to t('Create'), new_group_messager_path, remote: true
-
 
   -if @current_user.task.message_group.present?
      ==render 'group_messager/edit_forma'
