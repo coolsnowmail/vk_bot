@@ -4,7 +4,6 @@ class Bot < ActiveRecord::Base
   enum status: { 'Not Active' => 1, 'Pending' => 2, 'Active' => 3 }
   validates :status, inclusion: { in: Bot.statuses.keys }
   validates :description, presence: true
-  validates :description, uniqueness: true
   validates :description, length: { maximum: 18 }
   validates :access_token, length: { maximum: 180 }
   validates :access_token, length: { minimum: 18 }, allow_blank: true
