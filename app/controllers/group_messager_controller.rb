@@ -6,8 +6,7 @@ class GroupMessagerController < ApplicationController
     @message_group = MessageGroup.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @message_group = @current_user.task.build_message_group(message_group_params)
@@ -27,6 +26,7 @@ class GroupMessagerController < ApplicationController
   end
 
   private
+
     def set_message_group
       @message_group = MessageGroup.find(params[:id])
     end

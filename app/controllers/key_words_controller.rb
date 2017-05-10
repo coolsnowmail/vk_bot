@@ -6,7 +6,6 @@ class KeyWordsController < ApplicationController
     @key_word = KeyWord.new
   end
 
-
   def create
     @key_word = @current_user.task.message_group.key_words.build(key_word_params)
     respond_to do |format|
@@ -24,6 +23,7 @@ class KeyWordsController < ApplicationController
   end
 
   private
+
     def set_key_word
       @key_word = KeyWord.find(params[:id])
     end

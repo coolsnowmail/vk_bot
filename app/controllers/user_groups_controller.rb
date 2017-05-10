@@ -6,8 +6,7 @@ class UserGroupsController < ApplicationController
     @user_group = UserGroup.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @user_group = @current_user.build_user_group(user_group_params)
@@ -33,6 +32,7 @@ class UserGroupsController < ApplicationController
   end
 
   private
+
     def set_user_group
       @user_group = UserGroup.find(params[:id])
     end

@@ -11,8 +11,7 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @group = @current_user.task.groups.build(group_params)
@@ -45,6 +44,7 @@ class GroupsController < ApplicationController
   end
 
   private
+
     def set_group
       @group = Group.find(params[:id])
     end

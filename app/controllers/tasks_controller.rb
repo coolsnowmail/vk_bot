@@ -3,15 +3,14 @@ class TasksController < ApplicationController
   skip_before_action :authorize_admin
 
   def show
-    return render partial: 'showy'
+    render partial: 'showy'
   end
 
   def new
     @task = Task.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @task = @current_user.build_task(task_params)
@@ -37,10 +36,11 @@ class TasksController < ApplicationController
   end
 
   def refresh_part
-    return render partial: 'tasks/refresh_part'
+    render partial: 'tasks/refresh_part'
   end
 
   private
+
     def set_task
       @task = Task.find(params[:id])
     end

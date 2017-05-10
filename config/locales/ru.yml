@@ -1,4 +1,5 @@
 ru:
+  please checkin: 'Пожалуйста, пройдите авторитезацию'
   exit done: "Выход выполнен"
   wrong login or password: "Неверная комбинация имени и пароля"
   messages list: "Cписок сообщений"

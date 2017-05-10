@@ -8,15 +8,13 @@ class UsersController < ApplicationController
   skip_before_action :authorize_admin, only: [:show]
   skip_before_action :authorize_user, only: [:new, :create, :edit, :update, :destroy, :index]
 
-  def show
-  end
+  def show; end
 
   def new
     @user = User.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @user = @current_admin.users.build(user_params)
@@ -58,7 +56,7 @@ class UsersController < ApplicationController
     end
 
     def check_if_user_has_vk_group
-      if @current_user.user_group == nil
+      if @current_user.user_group.nil?
         redirect_to new_user_group_url, notice: t('users.enter_your_vk_group')
       end
     end

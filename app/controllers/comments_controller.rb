@@ -11,8 +11,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @comment = @current_user.task.comments.build(comment_params)
@@ -44,6 +43,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
     def set_comment
       @comment = Comment.find(params[:id])
     end

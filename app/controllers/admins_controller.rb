@@ -2,11 +2,9 @@ class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update]
   skip_before_action :authorize_user
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     respond_to do |format|
@@ -19,6 +17,7 @@ class AdminsController < ApplicationController
   end
 
   private
+
     def set_admin
       @admin = Admin.find(params[:id])
     end
