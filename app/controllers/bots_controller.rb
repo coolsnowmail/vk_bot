@@ -2,47 +2,31 @@ class BotsController < ApplicationController
   before_action :set_bot, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorize_admin
 
-  def index
-    @bots = @current_user.task.bots
-    flash[:notice] = t('bots.create a new bot') unless @bots.any?
-  end
-
-  def show
-  end
-
   def new
     @bot = Bot.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @bot = @current_user.task.bots.build(bot_params)
-
     respond_to do |format|
-      if @bot.save
-        format.html { redirect_to @bot, notice: t('bots.was successfully created') }
-      else
-        format.html { render :new }
-      end
+      @bot.save
+      format.js
     end
   end
 
   def update
     respond_to do |format|
-      if @bot.update(bot_params)
-        format.html { redirect_to @bot, notice: t('bots.was successfully updated') }
-      else
-        format.html { render :edit }
-      end
+      @bot.update(bot_params)
+      format.js
     end
   end
 
   def destroy
     @bot.destroy
     respond_to do |format|
-      format.html { redirect_to bots_url, notice: t('bots.was successfully destroyed') }
+      format.js
     end
   end
 

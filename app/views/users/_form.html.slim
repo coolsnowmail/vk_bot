@@ -1,18 +1,21 @@
-= form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      ul
-        - @user.errors.full_messages.each do |message|
-          li = message
+- if @user.errors.any?
+  .alert
+    h2 = "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+    ul
+      - @user.errors.full_messages.each do |message|
+        li = message
 
+= form_for @user, html: {class: "forma"} do |f|
   .field
-    = f.label :name
+    label = t("users.name")
     = f.text_field :name
   .field
-    = f.label :password
+    label = t("users.vk id")
+    = f.text_field :vk_id
+  .field
+    label = t("admin.password")
     = f.text_field :password
   .field
-    = f.label :vk_id
-    = f.text_field :vk_id
-  .actions = f.submit
+    label = t("admin.confirm password")
+    = f.text_field :password_confirmation
+  .actions = f.submit t("save_button"), class: "button"

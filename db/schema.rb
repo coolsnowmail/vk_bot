@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225051312) do
+ActiveRecord::Schema.define(version: 20170410180811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170225051312) do
   create_table "admins", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
+    t.string   "vk_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -29,9 +30,10 @@ ActiveRecord::Schema.define(version: 20170225051312) do
     t.string   "login_vk"
     t.string   "password_vk"
     t.string   "access_token"
-    t.boolean  "status",       default: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "status",       default: 1
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "vk_id"
   end
 
   add_index "bots", ["task_id"], name: "index_bots_on_task_id", using: :btree
@@ -39,11 +41,13 @@ ActiveRecord::Schema.define(version: 20170225051312) do
   create_table "comment_trakings", force: :cascade do |t|
     t.integer  "bot_id"
     t.integer  "comment_id"
+    t.integer  "bot_id"
+    t.integer  "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "comment_trakings", ["bot_id"], name: "index_comment_trakings_on_bot_id", using: :btree
+  add_index "comment_trakings", ["task_id"], name: "index_comment_trakings_on_task_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "task_id"
@@ -63,26 +67,50 @@ ActiveRecord::Schema.define(version: 20170225051312) do
 
   add_index "groups", ["task_id"], name: "index_groups_on_task_id", using: :btree
 
+  create_table "key_words", force: :cascade do |t|
+    t.string   "word"
+    t.integer  "message_group_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "key_words", ["message_group_id"], name: "index_key_words_on_message_group_id", using: :btree
+
   create_table "like_trakings", force: :cascade do |t|
     t.integer  "bot_id"
     t.string   "vk_user_id"
     t.integer  "offset"
     t.string   "vk_group_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "bot_id"
+    t.integer  "task_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "vk_user_status", default: 1
   end
 
-  add_index "like_trakings", ["bot_id"], name: "index_like_trakings_on_bot_id", using: :btree
+  add_index "like_trakings", ["task_id"], name: "index_like_trakings_on_task_id", using: :btree
+
+  create_table "message_groups", force: :cascade do |t|
+    t.integer  "task_id"
+    t.string   "vk_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "message_groups", ["task_id"], name: "index_message_groups_on_task_id", using: :btree
 
   create_table "message_trakings", force: :cascade do |t|
     t.integer  "bot_id"
     t.string   "vk_user_id"
     t.integer  "message_id"
+    t.integer  "bot_id"
+    t.integer  "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "message_trakings", ["bot_id"], name: "index_message_trakings_on_bot_id", using: :btree
+  add_index "message_trakings", ["task_id"], name: "index_message_trakings_on_task_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.integer  "task_id"
@@ -96,8 +124,9 @@ ActiveRecord::Schema.define(version: 20170225051312) do
   create_table "tasks", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "message_offset", default: 0
   end
 
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree

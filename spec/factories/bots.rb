@@ -1,8 +1,8 @@
 FactoryGirl.define do
-  factory :bot do
-    description "MyString"
-    login_vk "MyString"
-    password_vk "MyString"
-    access_token "MyString"
+  factory :bot, class: 'Bot' do
+    sequence(:description) { |i| "description#{i}"}
+    sequence(:access_token) { |i| "access_tokendsfsdfsdfsdfsdfsdf#{i}"}
+    sequence(:login_vk) { |i| "login_vk#{i}"}
+    password_vk '123'
   end
 end

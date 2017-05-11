@@ -7,22 +7,17 @@ class CommentsController < ApplicationController
     flash[:notice] = t('comments.create a new comment') unless @comments.any?
   end
 
-  def show
-  end
-
   def new
     @comment = Comment.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @comment = @current_user.task.comments.build(comment_params)
-
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: t('comments.was successfully created') }
+        format.html { redirect_to comments_path, notice: t('comments.was successfully created') }
       else
         format.html { render :new }
       end
@@ -32,7 +27,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: t('comments.was successfully updated') }
+        format.html { redirect_to comments_path, notice: t('comments.was successfully updated') }
       else
         format.html { render :edit }
       end
@@ -43,10 +38,12 @@ class CommentsController < ApplicationController
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to comments_url, notice: t('comments.was successfully destroyed') }
+      format.js
     end
   end
 
   private
+
     def set_comment
       @comment = Comment.find(params[:id])
     end

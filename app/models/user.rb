@@ -1,18 +1,22 @@
+# user model
 class User < ActiveRecord::Base
   has_secure_password
   belongs_to :admin
   has_one :user_group, dependent: :destroy
   has_one :task, dependent: :destroy
+  validates :name, :password, :vk_id, presence: true
+  validates :vk_id, numericality: :only_integer
+  validates :name, length: { maximum: 30 }
 
   def like_count
-    task.bots.to_a.sum { |bot| bot.like_trakings.size }
+    task.like_trakings.count
   end
 
   def comment_count
-    task.bots.to_a.sum { |bot| bot.comment_trakings.size }
+    task.comment_trakings.count
   end
 
   def message_count
-    task.bots.to_a.sum { |bot| bot.message_trakings.size }
+    task.message_trakings.count
   end
 end

@@ -1,35 +1,22 @@
-p#notice = notice
+.alert
+  p#notice = notice
 
-table
-  thead
-    tr
-      th
-      th
-      th
+ul.user-ul
+  p.descript#user_group_field =t('users.my group')
+  == render 'user_group_sector'
+  p.descript#ffff =t('users.my task')
+  ==render 'user_task_sector'
 
-  tbody
-      tr
-        td = @current_user.user_group.description
-        td = link_to t('Edit'), edit_user_group_path(@current_user.user_group.id)
-        td = link_to t('Destroy'), @current_user.user_group, data: { confirm: t('Are you sure') }, method: :delete
+  div.descript =t('users.list of bots')
+  = link_to t('Create'), new_bot_path, id: "new_bot_link", remote: true
 
-      tr
-        td = link_to @current_user.task.description, task_path(@current_user.task.id)
-        td = link_to t('Edit'), edit_task_path(@current_user.task.id)
-        td = link_to t('Destroy'), @current_user.task, data: { confirm: t('Are you sure') }, method: :delete
-br
-p = t('users.list of bots')
-- @current_user.task.bots.each do |bot|
-  ul
-    li = bot.description + t('users.bot status') + bot.status.to_s
-br
-br
-ul
+  span#boty
+    == render 'bots_list'
+
   -if @current_user.task.groups.first == nil
-    li = t('users.proccessing group') + t('users.no any group')
-  -if @current_user.task.groups.any?
-    li = t('users.proccessing group') + @current_user.task.groups.first.to_s
-  li = t('users.like count') + @current_user.like_count.to_s
-  li = t('users.message count') + @current_user.message_count.to_s
-  li = t('users.comment count') + @current_user.comment_count.to_s
+    span.task-info
+      li.user_items = t('users.proccessing group') + t('users.no any group')
+  -if @current_user.task.groups.any? && @current_user.task.any_active_bot?
+    span.task-info#task_infor
+      ==render 'task_info'
 

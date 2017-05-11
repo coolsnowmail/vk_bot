@@ -3,14 +3,14 @@ class TasksController < ApplicationController
   skip_before_action :authorize_admin
 
   def show
+    render partial: 'showy'
   end
 
   def new
     @task = Task.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @task = @current_user.build_task(task_params)
@@ -26,22 +26,17 @@ class TasksController < ApplicationController
 
   def update
     respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to user_url(@current_user.id), notice: t('tasks.task updated') }
-      else
-        format.html { render :edit }
-      end
+      @task.update(task_params)
+      format.js
     end
   end
 
-  def destroy
-    @task.destroy
-    respond_to do |format|
-      format.html { redirect_to user_url(@current_user.id), notice: t('tasks.successfully destroyed') }
-    end
+  def refresh_part
+    render partial: 'tasks/refresh_part'
   end
 
   private
+
     def set_task
       @task = Task.find(params[:id])
     end

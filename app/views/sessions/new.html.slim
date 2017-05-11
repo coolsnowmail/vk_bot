@@ -1,18 +1,22 @@
-div
+div class="session_header"
+  = link_to t("admin enter"), admin_login_url, method: :get
+
+div class="alert"
   -if flash[:alert]
     p =flash[:alert]
 
+
+div class="singup"
   =form_tag do
-    fieldset
-      legend =t('sessions.authorize pls')
-      div
-        =label_tag :name, t('sessions.name')
-        =text_field_tag :name, params[:name]
 
-      div
-        =label_tag :password, t('sessions.password')
-        =password_field_tag :password, params[:password]
+    h6 class="singup-title" = t('sessions.authorize pls')
 
-      div
-         =submit_tag t('sessions.enter')
+    .singup-field
+      lable= t('sessions.name')
+      = text_field_tag :name, params[:name]
 
+    .singup-field
+      lable = t('sessions.password')
+      = password_field_tag :password, params[:password]
+
+    .action-login =submit_tag t('sessions.enter'), class: "button-login"

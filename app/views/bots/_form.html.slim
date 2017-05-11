@@ -1,19 +1,24 @@
-= form_for @bot do |f|
-  - if @bot.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@bot.errors.count, "error")} prohibited this bot from being saved:"
-      ul
-        - @bot.errors.full_messages.each do |message|
-          li = message
+.wraping id="back" <<<<<
+
+= form_for @bot, html: {class: "forma"}, remote: true do |f|
+  .alert
+    - if @bot.errors.any?
+      #error_explanation
+        ul
+          - @bot.errors.full_messages.each do |message|
+            li = message
 
   .field
-    = f.label :description
+    = f.label t('bots.description')
     = f.text_field :description
   .field
-    = f.label :login_vk
+    = f.label t('bots.access_token')
+    = f.password_field :access_token
+  .field
+    = f.label t('bots.login_vk')
     = f.text_field :login_vk
   .field
-    = f.label :password_vk
+    = f.label t('bots.password_vk')
     = f.password_field :password_vk
 
-  .actions = f.submit t('save_button')
+  .actions = f.submit t('save_button'), class: "button"

@@ -1,8 +1,8 @@
-h1 Editing bot
+.alert
+  p#notice = notice
 
-== render 'form'
+.wraping
+  == render 'form'
 
-= link_to t('Show'), @bot
-'|
-= link_to t('Back'), bots_path
-
+.links
+  = link_to t('Back'), @current_user, class: "link_back"

@@ -1,24 +1,26 @@
-p#notice = notice
-h1 Listing messages
+.alert
+  p#notice = notice
 
-table
-  thead
-    tr
-      th Text
-      th
-      th
-      th
+ul.comments-box
+  -if @current_user.task.message_group == nil
+    #message_group_create
+      span =t('create message group')
+      =link_to t('Create'), new_group_messager_path, remote: true
 
-  tbody
-    - @messages.each do |message|
-      tr
-        td = message.text
-        td = link_to t('Show'), message
-        td = link_to t('Edit'), edit_message_path(message)
-        td = link_to t('Destroy'), message, data: { confirm: t('Are you sure') }, method: :delete
+  -if @current_user.task.message_group.present?
+     ==render 'group_messager/edit_forma'
+
+  .messages_list_head =t('messages list')
+  - @messages.each do |message|
+      li.comment-box id="message_#{message.id}"
+        .comment-description
+          span = message.text
+        .comment-maneger
+          = link_to t('Edit'), edit_message_path(message)
+          = link_to t('Destroy'), message, data: { confirm: t('Are you sure') }, method: :delete, remote: true
 
 br
-
-= link_to t('Create') , new_message_path
-'|
-= link_to t('Back'), task_path(@current_user.task.id)
+.links
+  = link_to t('Create') , new_message_path
+  '|
+  = link_to t('Back'), @current_user

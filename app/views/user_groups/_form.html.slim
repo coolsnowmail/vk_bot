@@ -1,7 +1,9 @@
-= form_for @user_group do |f|
-  - if @user_group.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@user_group.errors.count, "error")} prohibited this user_group from being saved:"
+.wraping#backyyy <<<<<
+
+= form_for @user_group, html: {class: "forma"}, remote: true do |f|
+
+  .alert
+    - if @user_group.errors.any?
       ul
         - @user_group.errors.full_messages.each do |message|
           li = message
@@ -13,5 +15,5 @@
     = f.label t('user_groups.url')
     = f.text_field :url
   .actions
-    = f.submit t('save_button')
+    = f.submit t('save_button'), class: "button"
 

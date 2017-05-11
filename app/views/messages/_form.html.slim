@@ -1,12 +1,12 @@
-= form_for @message do |f|
+.alert
   - if @message.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@message.errors.count, "error")} prohibited this message from being saved:"
       ul
         - @message.errors.full_messages.each do |message|
           li = message
 
+= form_for @message, html: {class: "forma"} do |f|
   .field
     = f.label :text
-    = f.text_field :text
-  .actions = f.submit t('Create')
+    = f.text_area :text, rows: 20, cols: 45
+  .actions = f.submit t('Create'), class: "button"

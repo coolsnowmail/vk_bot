@@ -7,22 +7,18 @@ class GroupsController < ApplicationController
     flash[:notice] = t('groups.create a new group') unless @groups.any?
   end
 
-  def show
-  end
-
   def new
     @group = Group.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @group = @current_user.task.groups.build(group_params)
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: t('groups.was successfully created') }
+        format.html { redirect_to groups_path, notice: t('groups.was successfully created') }
       else
         format.html { render :new }
       end
@@ -32,7 +28,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: t('groups.was successfully updated') }
+        format.html { redirect_to groups_path, notice: t('groups.was successfully updated') }
       else
         format.html { render :edit }
       end
@@ -43,10 +39,12 @@ class GroupsController < ApplicationController
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: t('groups.was successfully destroyed') }
+      format.js
     end
   end
 
   private
+
     def set_group
       @group = Group.find(params[:id])
     end

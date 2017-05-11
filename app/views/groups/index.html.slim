@@ -1,24 +1,18 @@
-p#notice = notice
-h1 Listing groups
+.alert
+  p#notice = notice
 
-table
-  thead
-    tr
-      th Url
-      th
-      th
-      th
+h4 = t('groups.Listing groups')
 
-  tbody
-    - @groups.each do |group|
-      tr
-        td = group.url
-        td = link_to t('Show'), group
-        td = link_to t('Edit'), edit_group_path(group)
-        td = link_to t('Destroy'), group, data: { confirm: t('Are you sure') }, method: :delete
+ul.comments-box
+  - @groups.each do |group|
+    li.comment-box id='group_#{group.id}'
+      .comment-description
+        span = group.url
+      .comment-maneger
+        = link_to t('Edit'), edit_group_path(group)
+        = link_to t('Destroy'), group, data: { confirm: t('Are you sure') }, method: :delete, remote: true
 
-br
-
-= link_to t('Create') , new_group_path
-'|
-= link_to t('Back'), task_path(@current_user.task.id)
+.links
+  = link_to t('Create') , new_group_path
+  '|
+  = link_to t('Back'), @current_user
