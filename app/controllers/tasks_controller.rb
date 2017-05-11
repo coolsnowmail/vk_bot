@@ -26,12 +26,8 @@ class TasksController < ApplicationController
 
   def update
     respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to user_url(@current_user.id), notice: t('tasks.task updated') }
-        format.js
-      else
-        format.js
-      end
+      @task.update(task_params)
+      format.js
     end
   end
 

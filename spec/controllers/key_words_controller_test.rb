@@ -31,7 +31,7 @@ RSpec.describe KeyWordsController, :type => :controller do
       user.task = task
       task.message_group = message_group
       session[:user_id] = user.id
-      post :create, :key_word => { word: 'wording'}, format: :js
+      post :create, :key_word => { word: 'wording' }, format: :js
       expect(KeyWord.last.word).to eq('wording')
     end
     it 'should get key_word create error' do

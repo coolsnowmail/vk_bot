@@ -33,13 +33,13 @@ RSpec.describe AdminsController, :type => :controller do
   context 'update' do
     it 'should redirect_to admin_path' do
       session[:admin_id] = admin.id
-      post :update, id: admin.id, :admin => {name: "title0", password: "1234", password_confirmation: "1234", vk_id: "13465464"}
+      post :update, id: admin.id, :admin => { name: 'title0', password: '1234', password_confirmation: '1234', vk_id: '13465464' }
       expect(response).to redirect_to(assigns(:admin))
     end
 
     it 'should render edit' do
       session[:admin_id] = admin.id
-      post :update, id: admin.id, :admin => {name: "title0", password: nil, password_confirmation: nil, vk_id: nil}
+      post :update, id: admin.id, :admin => { name: 'title0', password: nil, password_confirmation: nil, vk_id: nil }
       expect(response).to render_template(:edit)
     end
   end

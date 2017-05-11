@@ -10,7 +10,7 @@ RSpec.describe Bot, :type => :model do
     it { should allow_value("", nil).for(:access_token) }
     it { should belong_to :task }
     it do
-      should define_enum_for(:status).with({"Not Active" => 1, "Pending" => 2, "Active" => 3})
+      should define_enum_for(:status).with({ "Not Active" => 1, "Pending" => 2, "Active" => 3 })
     end
   end
 

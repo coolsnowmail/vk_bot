@@ -39,14 +39,14 @@ RSpec.describe GroupMessagerController, :type => :controller do
     it 'should get message_group create success' do
       user.task = task
       session[:user_id] = user.id
-      post :create, :message_group => { name: 'message_group000', vk_id: 'molodosti'}, format: :js
+      post :create, :message_group => { name: 'message_group000', vk_id: 'molodosti' }, format: :js
       expect(MessageGroup.last.name).to eq('message_group000')
       expect(response).to render_template(partial: 'group_messager/_success_save')
     end
     it 'should get message_group create error' do
       user.task = task
       session[:user_id] = user.id
-      post :create, :message_group => { name: nil, vk_id: nil}, format: :js
+      post :create, :message_group => { name: nil, vk_id: nil }, format: :js
       expect(response).to render_template(partial: 'group_messager/_fail_save')
       expect(assigns(:message_group).persisted?).to eq(false)
     end
@@ -56,14 +56,14 @@ RSpec.describe GroupMessagerController, :type => :controller do
     it 'should get message_group update success' do
       user.task = task
       session[:user_id] = user.id
-      post :update, id: message_group.id, :message_group => { name: 'message_group000', vk_id: 'molodosti'}, format: :js
+      post :update, id: message_group.id, :message_group => { name: 'message_group000', vk_id: 'molodosti' }, format: :js
       expect(message_group.reload.name).to eq('message_group000')
       expect(response).to render_template(:update)
     end
     it 'should get message_group update error' do
       user.task = task
       session[:user_id] = user.id
-      post :update, id: message_group.id, :message_group => { name: nil, vk_id: nil}, format: :js
+      post :update, id: message_group.id, :message_group => { name: nil, vk_id: nil }, format: :js
       expect(response).to render_template(:update)
     end
   end

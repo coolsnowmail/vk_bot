@@ -17,6 +17,6 @@ RSpec.describe MessageGroup, :type => :model do
   it 'should get key words' do
     message_group.key_words << key_word1
     message_group.key_words << key_word2
-    expect(message_group.take_key_words).to eq(["word", "word"])
+    expect(message_group.take_key_words).to eq(['word', 'word'])
   end
 end

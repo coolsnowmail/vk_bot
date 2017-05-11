@@ -168,14 +168,14 @@ RSpec.describe UsersController, :type => :controller do
   context 'should do create' do
     it 'should get user create success' do
       session[:admin_id] = admin.id
-      post :create, :user => { name: 'name', password: '123', password_conformation: '123', vk_id: '135454534'}
+      post :create, :user => { name: 'name', password: '123', password_conformation: '123', vk_id: '135454534' }
       expect(User.last.vk_id).to eq('135454534')
       expect(response).to redirect_to(admin_path(admin.id))
       expect(flash[:notice]).to eq(I18n.t('users.User was successfully created'))
     end
     it 'should get user create error' do
       session[:admin_id] = admin.id
-      post :create, :user => { name: nil, password: '123', password_conformation: '123', vk_id: '135454534'}
+      post :create, :user => { name: nil, password: '123', password_conformation: '123', vk_id: '135454534' }
       expect(response).to render_template(:new)
     end
   end
@@ -183,14 +183,14 @@ RSpec.describe UsersController, :type => :controller do
   context 'should do update' do
     it 'should get user update success' do
       session[:admin_id] = admin.id
-      post :update, id: user.id, :user => { name: 'name000', password: '123', password_conformation: '123', vk_id: '13545554'}
+      post :update, id: user.id, :user => { name: 'name000', password: '123', password_conformation: '123', vk_id: '13545554' }
       expect(user.reload.name).to eq('name000')
       expect(response).to redirect_to(admin_path(admin.id))
       expect(flash[:notice]).to eq(I18n.t('users.User was successfully updated'))
     end
     it 'should get user update error' do
       session[:admin_id] = admin.id
-      post :update, id: user.id, :user => { name: nil, password: '123', password_conformation: '123', vk_id: '135454534'}
+      post :update, id: user.id, :user => { name: nil, password: '123', password_conformation: '123', vk_id: '135454534' }
       expect(response).to render_template(:edit)
     end
   end

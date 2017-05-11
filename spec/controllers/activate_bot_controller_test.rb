@@ -13,7 +13,7 @@ RSpec.describe ActivateBotController, :type => :controller do
       session[:user_id] = user.id
       get :activate
       expect(response).to redirect_to(user_path(user.id))
-      expect(flash[:notice]).to eq(I18n.t("bots.params error"))
+      expect(flash[:notice]).to eq(I18n.t('bots.params error'))
     end
 
     it 'should redirect to curent_user if message group not found' do
@@ -44,22 +44,5 @@ RSpec.describe ActivateBotController, :type => :controller do
       expect(response).to redirect_to(user_path(user.id))
       expect(flash[:notice]).to eq(I18n.t("bots.access token error"))
     end
-
-    # it 'should get success response from vk' do
-    #   session[:user_id] = user.id
-    #   task.bots << bot
-    #   task.message_group = message_group
-    #   message_group.key_words << key_word
-    #   dbl = ActivateBotController.stub(:check_token) { 'this is the value to return' }
-    #   get :activate, bot_id: bot.id
-      # parsed_response = JSON.parse(response.body)
-      # parsed_response = JSON.parse(response.body)
-      # expect(parsed_response['error']).to eq("Student does not exist")
-      # dbl = double("Some Collaborator")
-      # expect(dbl).to receive(:foo)
-      # expect(assigns(:bot_piar_groups)).to eq(0)
-      # expect(response).to redirect_to(user_path(user.id))
-      # expect(flash[:notice]).to eq(I18n.t("bots.access token error"))
-    # end
   end
 end

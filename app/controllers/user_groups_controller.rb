@@ -22,12 +22,8 @@ class UserGroupsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user_group.update(user_group_params)
-        format.html { redirect_to user_url(@current_user.id), notice: t('user_groups.successfully updated') }
-        format.js
-      else
-        format.js
-      end
+      @user_group.update(user_group_params)
+      format.js
     end
   end
 
